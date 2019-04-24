@@ -30,8 +30,7 @@ class map : public squares
 				public:
 								std::vector<squares*> columns;
 								//constructs and object for map
-								Map();
+								grid();
 			};
-
 
 #endif
