@@ -18,6 +18,8 @@
 //Value to control debug statements
 #define DEBUG 1
 
+
+//Main menu class
 class Main_Menu : public GameState 
 {
      public:
@@ -39,9 +41,9 @@ class Main_Menu : public GameState
        Text title;
 
        //Button text
-       Text play;
-       Text option;
-       Text exit;
+      // Text play;
+      // Text option;
+      // Text exit;
 
        //Enumerator to keep track of button position
        enum select { start, options, exit };
