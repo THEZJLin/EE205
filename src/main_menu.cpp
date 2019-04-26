@@ -1,13 +1,15 @@
 //cpp file for main menu
 #include "main_menu.hpp"
 #include "state_man.hpp"
+#include "action.hpp"
+#include "map.hpp"
 
 #include <SFML/Graphics.hpp>
      using namespace sf;
 #include <iostream>
 
 //Constructor
-Main_Menu::Main_Menu() {
+Main_Menu::Main_Menu(Game* game_) {
 if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
      //Set button size
      play_rect = RectangleShape(Vector2f(HSIZE, VSIZE));
@@ -34,7 +36,7 @@ if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
      n = 0;
 
      //Create a game object
-     game = new Game();
+     game = game_;
 if(DEBUG) std::cout << "Main Menu constructor successfully finished" << std::endl;
 }
 
@@ -76,6 +78,7 @@ void Main_Menu::handleInput() {
                                 case start:
                                      //start the game
                                      std::cout << "Game started" << std::endl;
+                                     game->pushState(new Action(game,new Map()));
                                      break;
                                 case options:
                                      //Do nothing for now

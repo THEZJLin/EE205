@@ -24,7 +24,7 @@ class Main_Menu : public GameState
 {
      public:
           //constructor
-          Main_Menu();
+          Main_Menu(Game* game_);
 
           //Inherited virtual functions
           void draw();
