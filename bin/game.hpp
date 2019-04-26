@@ -24,8 +24,12 @@ class Game {
           void pushState(GameState* state);
           void popState();
 
+          //Getters
           //Returns enumerator with current state
           state viewState();
+          //Returns current state
+          GameState* getState();
+          
 
           //sfml window
           sf::RenderWindow window;

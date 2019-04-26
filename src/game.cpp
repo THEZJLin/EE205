@@ -32,6 +32,10 @@ state Game::viewState() {
      return Start;
 }
 
+GameState* Game::getState() {
+     return states.top();
+}
+
 //Destructor
 Game::~Game() {
      while(!states.empty()) {
