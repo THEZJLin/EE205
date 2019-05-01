@@ -24,6 +24,7 @@ int main() {
                game.getState()->handleInput();
 
           }
+
           //Update graphics accordingly
           game.getState()->update();
           //Redraw screen

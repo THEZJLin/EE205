@@ -88,7 +88,7 @@ void Main_Menu::handleInput() {
                                      //Exit the application
                                      std::cout << "Exiting" <<std::endl;
                                      game->window.close();
-                                     break;
+                                     return; break;
                                 default: break;
                            }
                       }
