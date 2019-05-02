@@ -20,10 +20,13 @@ Map::Map() {
 
 //Destructor
 Map::~Map() {
-     std::vector<Square*>::reverse_iterator it2;
-     for(std::vector<Square*>::reverse_iterator it=square.rbegin();it!=square.rend();++it) {
-          delete *it2;
+     std::vector<Square*>::iterator it = square.begin();
+     std::vector<Square*>::iterator it2;
+     while(it != square.end()) {
           it2 = it;
+          it++;
+          delete *it2;
+
      }
 }
 

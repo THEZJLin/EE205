@@ -10,7 +10,7 @@
 #include <iostream>
 
 //Constructor
-Main_Menu::Main_Menu(Game* game_) {
+Main_Menu::Main_Menu(Game* game_,Map* map_) {
 if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
 
      //Load in menu font, throw an exception if font not found
@@ -63,6 +63,7 @@ if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
 
      selected = start;
      n = 0;
+     map = map_;
 
      //Create a game object
      game = game_;
@@ -112,7 +113,7 @@ void Main_Menu::handleInput() {
                                 case start:
                                      //start the game
                                      std::cout << "Game started" << std::endl;
-                                     game->pushState(new Action(game,new Map()));
+                                     game->pushState(new Action(game,map));
                                      break;
                                 case options:
                                      //Do nothing for now

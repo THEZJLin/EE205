@@ -34,12 +34,15 @@ class Main_Menu : public GameState
 {
      public:
           //constructor
-          Main_Menu(Game* game_);
+          Main_Menu(Game* game_, Map* map_);
 
           //Inherited virtual functions
           void draw();
           void update();
           void handleInput();
+
+          //Map to pass to next state
+          Map* map;
 
      private:
        //menu button shapes
