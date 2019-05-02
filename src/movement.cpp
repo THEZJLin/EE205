@@ -10,9 +10,6 @@ Movement::Movement(Map* map_,Game* game_){
 	game = game_;
 	i=0;
 	
-	//initializes the text variable type
-	Text population = map->square[i]->population;
-	Text terrain = map->square[i]->terrain;
 }	
 
 void Movement::draw(){
