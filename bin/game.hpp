@@ -8,6 +8,8 @@
 #include "state_man.hpp"
 #include <string>
 
+#define DEBUG 1
+
 class GameState;
 //Manages window as well as states
 

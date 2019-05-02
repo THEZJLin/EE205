@@ -9,6 +9,10 @@ Movement::Movement(Map* map_,Game* game_){
 	map = map_;
 	game = game_;
 	i=0;
+     //Set spawn point
+     std::cout<<"setting spawn"<<std::endl;
+     map->setPop(0);
+     std::cout<<"finished setting spawn"<<std::endl;
 }	
 
 void Movement::draw(){
@@ -18,6 +22,8 @@ void Movement::draw(){
 		}	
 }
 void Movement::update(){
+     std::cout<<"updating screen"<<std::endl;
+     map->updatePop();
 
 }
 void Movement::handleInput(){

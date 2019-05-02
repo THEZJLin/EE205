@@ -19,9 +19,9 @@ Square::Square(int x_pos, int y_pos, int n_) {
      n = n_;
      birth = .9;
      death = .9;
+     pop = 0;
 }
 //Sets Population value in a square
-//Square::setPopulation(int p)
 
 //Terrain modifiers
 void Square::setTileType(terrain t) {
