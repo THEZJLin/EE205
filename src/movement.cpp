@@ -9,62 +9,89 @@ Movement::Movement(Map* map_,Game* game_){
 	map = map_;
 	game = game_;
 	i=0;
+	
+	//initializes the text variable type
+	Text population = map->square[i]->population;
+	Text terrain = map->square[i]->terrain;
 }	
 
 void Movement::draw(){
 		game->window.clear();
 		for(std::vector<Square*>::iterator it=map->square.begin();it!=map->square.end();++it) {
 		game->window.draw((*it)->rect);
-		}	
+		}
+		//show population to side of grid
+		population.setFont(font);
+		population.setCharacterSize(TXTSIZE);
+		population.setFontColor(Color::White);
+		population.setPosition(Vector2f(710, 10));
+	
+		//show terrain to side of grid
+		terrain.setFont(font);
+		terrain.setCharacterSize(TXTSIZE);
+		terrain.setFontColor(Color::White);
+		terrain.setPosition(Vector2f(710, 30));
 }
 void Movement::update(){
 
 }
 void Movement::handleInput(){
+	//initializes key presses
 	sf::Keyboard::Key x;
 	if(game->event.type == Event::KeyPressed){
 	x = game->event.key.code;
 	}
 	else{}
-	switch(x){ //vector of square pointers
-	case sf::Keyboard::Up: //move up, -n
+	//vector of square pointers
+	switch(x){
+	case sf::Keyboard::Up: //move up
+		//can't go up if you're already on the first row
 		if(i <= MAP_DIM-1){}
 			else{
+				//changes modified square back to uniform
 				map->square[i]->rect.setOutlineThickness(1);
 				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i - MAP_DIM;
+				//changes the new square at index to differentiate where you're located
 				map->square[i]->rect.setOutlineThickness(2);
 				map->square[i]->rect.setOutlineColor(Color::Black);
 			}
 			break;
 	case sf::Keyboard::Down: //move down, +n
+		//can't go down if you're already on the bottom row
 		if(i >=((MAP_DIM * MAP_DIM) - MAP_DIM)){}
 			else{
+				//changes modified square back to uniform
 				map->square[i]->rect.setOutlineThickness(1);
 				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i + MAP_DIM;
+				//changes the new square at index to differentiate where you're located
 				map->square[i]->rect.setOutlineThickness(2);
 				map->square[i]->rect.setOutlineColor(Color::Black);
 			}	
 			break;
 	case sf::Keyboard::Left: //move left, -1
-		//if current a multiple of 20, don't do anything
+		//if you're currently at a multiple of MAP_DIM you can't move left because that means you're already in the left column
 		if((i)%MAP_DIM == 0){}
 			else{
+				//changes modified square back to uniform
 				map->square[i]->rect.setOutlineThickness(1);
 				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i-1;
+				//changes the new square at index to differentiate where you're located
 				map->square[i]->rect.setOutlineThickness(2);
 				map->square[i]->rect.setOutlineColor(Color::Black);
 			}
 			break;
 	case sf::Keyboard::Right: //move right, +1
-		//if current +1 is a multiple of 20, don't do anything
+		//if you're current location + 1 is a multiple of MAP_DIM you can't move right because that means you're already in the right column
 		if((i+1)%MAP_DIM == 0){}
 			else{
+				//changes modified square back to uniform
 				map->square[i]->rect.setOutlineThickness(1);
 				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i+1;
+				//changes the new square at index to differentiate where you're located
 				map->square[i]->rect.setOutlineThickness(2);
 				map->square[i]->rect.setOutlineColor(Color::Black);
 
@@ -72,6 +99,7 @@ void Movement::handleInput(){
 			break;
 		default:break;
 	}
+		//closes on window x
 		if(game->event.type == Event::Closed) {
 			game->window.close();
 			}
