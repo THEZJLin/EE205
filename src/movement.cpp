@@ -36,7 +36,7 @@ void Movement::handleInput(){
 			}
 			break;
 	case sf::Keyboard::Down: //move down, +n
-		if(i >((MAP_DIM * MAP_DIM) - 1 - MAP_DIM)){}
+		if(i >=((MAP_DIM * MAP_DIM) - MAP_DIM)){}
 			else{
 				map->square[i]->rect.setFillColor(Color::Yellow);
 				i = i + MAP_DIM;
