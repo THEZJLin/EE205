@@ -14,6 +14,7 @@ Map::Map() {
                n++;
           }
      }
+
 }
 
 //Destructor
@@ -23,5 +24,9 @@ Map::~Map() {
           delete *it2;
           it2 = it;
      }
+}
+
+void Map::setSpawn(int s) {
+     square[s]->population = 1;
 }
 

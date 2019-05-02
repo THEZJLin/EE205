@@ -15,6 +15,8 @@ menu_test: ./src/menu_test.o
 grid_test: ./src/grid.o
 	g++ ./src/grid.o -o ./tst/grid_test.out $(SFMLFLAGS)
 	./tst/grid_test.out
+
+
 #==========================================================================================================
 
 #Commands to create .o files
