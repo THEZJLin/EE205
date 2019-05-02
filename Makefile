@@ -4,11 +4,11 @@ SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 #Commands to create executable files
 
-main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o
-	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o  -o ./tst/a.out $(SFMLFLAGS)
+main: ./src/main_menu.o ./src/population.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o
+	g++ ./tst/main.o ./src/population.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o  -o ./tst/a.out $(SFMLFLAGS)
 	./tst/a.out
 
-menu_test: ./src/menu_test.o 
+menu_test: ./src/menu_test.o
 	g++ ./src/menu_test.o -o ./tst/menu_test.out $(SFMLFLAGS)
 	./tst/menu_test.out
 
@@ -33,6 +33,9 @@ grid_test: ./src/grid.o
 ./src/square.o: ./src/square.cpp ./bin/square.hpp
 	g++ -c ./src/square.cpp -I./bin/ -o ./src/square.o
 
+./src/population.o: ./src/population.cpp ./bin/population.hpp
+	g++ -c ./src/population.cpp -I./bin/ -o ./src/population.o
+
 ./src/game.o: ./bin/state_man.hpp ./bin/game.hpp ./src/game.cpp
 	g++ -c ./src/game.cpp -I./bin/ -o ./src/game.o
 
@@ -40,9 +43,10 @@ grid_test: ./src/grid.o
 	g++ -c ./tst/main.cpp -I./bin/ -o ./tst/main.o
 
 
+
 #Individual function proof of concepts
 
-./src/menu_test.o: ./src/menu_test.cpp 
+./src/menu_test.o: ./src/menu_test.cpp
 	g++ -c ./src/menu_test.cpp -o ./src/menu_test.o
 
 ./src/grid.o: ./src/grid.cpp

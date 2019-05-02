@@ -7,7 +7,8 @@ Square::Square(int x_pos, int y_pos, int n_) {
      rect = RectangleShape(Vector2f(SIZE, SIZE));
 
 //==Place holder color until texture is implemented==
-     rect.setFillColor(Color::Green);
+     if(population = 0)rect.setFillColor(Color::Green);
+		 if(population != 0)rect.setFillColor(Color::Red);
      rect.setOutlineThickness(1);
      rect.setOutlineColor(Color::Red);
 //===================================================
@@ -19,7 +20,7 @@ Square::Square(int x_pos, int y_pos, int n_) {
      //Assign values to square parameters
      n = n_;
      birth = .9;
-     death = .9;
+     death = .5;
 }
 //Sets Population value in a square
 //Square::setPopulation(int p)
@@ -28,7 +29,7 @@ Square::Square(int x_pos, int y_pos, int n_) {
 void Square::setTileType(terrain t) {
 std::cout << "Terrain is being set" << std::endl;
      switch(t) {
-          case plain: 
+          case plain:
                birth = birth * 1;
                death = death * 1;
                tileType = plain;
@@ -36,7 +37,7 @@ std::cout << "Terrain is being set" << std::endl;
                rect.setFillColor(Color::Green);
                break;
 
-          case forest : 
+          case forest :
                birth = birth * 1.2;
                death = death * .8;
                tileType = forest;
@@ -57,7 +58,7 @@ std::cout << "Terrain is being set" << std::endl;
                tileType = ocean;
                std::cout << tileType << std::endl;
                break;
-               
+
           case mountain :
                birth = 0;
                death = 0;

@@ -15,7 +15,7 @@ enum terrain {plain, forest, desert, ocean, mountain};
 class Square {
      public:
           //Parameters
-          int population = 0;
+          int population ;
           terrain tileType;
           float birth;
           float death;
