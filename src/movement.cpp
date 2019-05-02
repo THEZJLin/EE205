@@ -4,7 +4,6 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 using namespace sf;
-#define MAP_DIM;
 
 Movement::Movement(Map* map_,Game* game_){
 	map = map_;
