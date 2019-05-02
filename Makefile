@@ -4,8 +4,8 @@ SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 #Commands to create executable files
 
-main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o
-	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o  -o ./tst/a.out $(SFMLFLAGS)
+main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o
+	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o -o ./tst/a.out $(SFMLFLAGS)
 	./tst/a.out
 
 menu_test: ./src/menu_test.o 
@@ -38,8 +38,8 @@ grid_test: ./src/grid.o
 ./tst/main.o: ./tst/main.cpp ./bin/map.hpp ./bin/main_menu.hpp ./bin/action.hpp
 	g++ -c ./tst/main.cpp -I./bin/ -o ./tst/main.o
 
-./src/movement.o: ./src/movement.hpp ./bin/map.hpp ./bin/game.hpp
-	g++ -c ./src/grid.cpp -o ./src/movement.cpp
+./src/movement.o: ./bin/movement.hpp ./src/movement.cpp ./bin/map.hpp ./src/map.cpp ./bin/game.hpp ./bin/action.hpp ./src/action.cpp
+	g++ -c ./src/movement.cpp -I./bin/ -o ./src/movement.o
 	
 #Individual function proof of concepts
 

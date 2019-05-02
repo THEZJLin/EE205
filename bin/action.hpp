@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "map.hpp"
 #include "state_man.hpp"
+#include "movement.hpp"
 
 //This class is a placeholder for testing map
 class Action : public GameState {
