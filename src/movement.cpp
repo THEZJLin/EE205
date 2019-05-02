@@ -30,35 +30,43 @@ void Movement::handleInput(){
 	case sf::Keyboard::Up: //move up, -n
 		if(i <= MAP_DIM-1){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Yellow); 
+				map->square[i]->rect.setOutlineThickness(1);
+				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i - MAP_DIM;
-				map->square[i]->rect.setFillColor(Color::Black);
+				map->square[i]->rect.setOutlineThickness(2);
+				map->square[i]->rect.setOutlineColor(Color::Black);
 			}
 			break;
 	case sf::Keyboard::Down: //move down, +n
 		if(i >=((MAP_DIM * MAP_DIM) - MAP_DIM)){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Yellow);
+				map->square[i]->rect.setOutlineThickness(1);
+				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i + MAP_DIM;
-				map->square[i]->rect.setFillColor(Color::Black);
+				map->square[i]->rect.setOutlineThickness(2);
+				map->square[i]->rect.setOutlineColor(Color::Black);
 			}	
 			break;
 	case sf::Keyboard::Left: //move left, -1
 		//if current a multiple of 20, don't do anything
 		if((i)%MAP_DIM == 0){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Yellow);
+				map->square[i]->rect.setOutlineThickness(1);
+				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i-1;
-				map->square[i]->rect.setFillColor(Color::Black);
+				map->square[i]->rect.setOutlineThickness(2);
+				map->square[i]->rect.setOutlineColor(Color::Black);
 			}
 			break;
 	case sf::Keyboard::Right: //move right, +1
 		//if current +1 is a multiple of 20, don't do anything
 		if((i+1)%MAP_DIM == 0){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Yellow);
+				map->square[i]->rect.setOutlineThickness(1);
+				map->square[i]->rect.setOutlineColor(Color::Red);
 				i = i+1;
-				map->square[i]->rect.setFillColor(Color::Black);
+				map->square[i]->rect.setOutlineThickness(2);
+				map->square[i]->rect.setOutlineColor(Color::Black);
 
 			}
 			break;
