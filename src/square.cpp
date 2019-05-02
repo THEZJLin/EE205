@@ -33,6 +33,7 @@ std::cout << "Terrain is being set" << std::endl;
                death = death * 1;
                tileType = plain;
                std::cout << tileType << std::endl;
+               rect.setFillColor(Color::Green);
                break;
 
           case forest : 
@@ -40,6 +41,7 @@ std::cout << "Terrain is being set" << std::endl;
                death = death * .8;
                tileType = forest;
                std::cout << tileType << std::endl;
+               rect.setFillColor(Color::Yellow);
                break;
 
           case desert :
@@ -64,3 +66,5 @@ std::cout << "Terrain is being set" << std::endl;
                break;
           }
      }
+
+//Square::setBuilding

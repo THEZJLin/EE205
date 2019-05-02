@@ -7,7 +7,7 @@
 #include <vector>
 
 //Grid parameters
-#define MAP_DIM 20
+#define MAP_DIM 7
 #define SPAWN1 20
 
 //The "map" used in the game, consists of a grid of "Square" objects

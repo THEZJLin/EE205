@@ -25,9 +25,9 @@ int main() {
           }
 
 
-          map.setSpawn(20);
-          map.square[20]->setTileType(forest);
-          std::cout << "Square 20 is now forest type" << std::endl;
+          map.setSpawn(10);
+          map.square[50]->setTileType(plain);
+          std::cout << "Square 10 is now forest type" << std::endl;
 
 
           //Update graphics accordingly
@@ -39,3 +39,9 @@ int main() {
 
      }
 }
+
+//make command probably
+//g++ -c ./tst/tileType_test.cpp -I./bin/ -o ./tst/tileType_test.o
+
+
+//g++ ./tst/tileType_test.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o  -o ./tst/a.out -lsfml-graphics -lsfml-window -lsfml-system

@@ -17,6 +17,8 @@ class Square {
           //Parameters
           int population = 0;
           terrain tileType;
+          float birth;
+          float death;
           //Constructor
           Square(int x_pos, int y_pos, int n_);
 
@@ -25,6 +27,7 @@ class Square {
 
           //Setters
           //setPopulation(int p);
+
           void setTileType(terrain t);
           //Getters
 
@@ -34,9 +37,6 @@ class Square {
           //Population parameter, vector stores population of all factions on square
           std::vector<unsigned> pop;
 
-          //Terrain modifiers
-          float birth;
-          float death;
 };
 
 #endif
