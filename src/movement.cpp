@@ -4,6 +4,7 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 using namespace sf;
+#define MAP_DIM;
 
 Movement::Movement(Map* map_,Game* game_){
 	map = map_;
@@ -28,24 +29,24 @@ void Movement::handleInput(){
 	else{}
 	switch(x){ //vector of square pointers
 	case sf::Keyboard::Up: //move up, -n
-		if(i >= 6){}
+		if(i <= MAP_DIM-1){}
 			else{
 				map->square[i]->rect.setFillColor(Color::Green); 
-				i = i-7;
+				i = i - MAP_DIM;
 				map->square[i]->rect.setFillColor(Color::Black);
 			}
 			break;
 	case sf::Keyboard::Down: //move down, +n
-		if(i >= 41){}
+		if(i >= ((MAP_DIM * MAP_DIM)-1)){}
 			else{
 				map->square[i]->rect.setFillColor(Color::Green);
-				i = i+7;
+				i = i + MAP_DIM;
 				map->square[i]->rect.setFillColor(Color::Black);
 			}	
 			break;
 	case sf::Keyboard::Left: //move left, -1
 		//if current a multiple of 20, don't do anything
-		if((i)%7 == 0){}
+		if((i)%MAP_DIM == 0){}
 			else{
 				map->square[i]->rect.setFillColor(Color::Green);
 				i = i-1;
@@ -54,7 +55,7 @@ void Movement::handleInput(){
 			break;
 	case sf::Keyboard::Right: //move right, +1
 		//if current +1 is a multiple of 20, don't do anything
-		if((i+1)%7 == 0){}
+		if((i+1)%MAP_DIM == 0){}
 			else{
 				map->square[i]->rect.setFillColor(Color::Green);
 				i = i+1;
