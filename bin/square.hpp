@@ -11,14 +11,22 @@
 #define SPAWN1 20
 //Alias for tyleType
 enum terrain {plain, forest, desert, ocean, mountain};
+enum building {temple};
 //Class creates squares used in grid, it also stores game information (population, modifiers, etc)
 class Square {
      public:
           //Parameters
+
+          //Population on square
           int population = 0;
+
+          //Terrain of square
           terrain tileType;
+          building buildingType;
+          //Population growth rates
           float birth;
           float death;
+
           //Constructor
           Square(int x_pos, int y_pos, int n_);
 
@@ -28,7 +36,13 @@ class Square {
           //Setters
           //setPopulation(int p);
 
+          //Sets the terrain type of the square
           void setTileType(terrain t);
+
+          //Sets a texture of a building
+
+          //Sets a building in a square
+          void setBuilding(building b);
           //Getters
 
      private:

@@ -13,7 +13,7 @@ int main() {
      Map map;
      Game game;
      game.pushState(new Main_Menu(&game));
-
+     map.square[0]->setTileType(plain);     
      //Run until window closes
      while(game.window.isOpen()) {
           //Read event
@@ -25,9 +25,10 @@ int main() {
           }
 
 
-          map.setSpawn(10);
-          map.square[10]->setTileType(plain);
-          std::cout << "Square 10 is now forest type" << std::endl;
+          //map.setSpawn(10);
+          //map.square[10]->setTileType(plain);
+          //map.square[10]->rect.setPosition(Vector2f(4,4));
+          //std::cout << "Square 10 is now forest type" << std::endl;
 
 
           //Update graphics accordingly
