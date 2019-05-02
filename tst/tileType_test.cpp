@@ -26,7 +26,7 @@ int main() {
 
 
           map.setSpawn(10);
-          map.square[50]->setTileType(plain);
+          map.square[10]->setTileType(plain);
           std::cout << "Square 10 is now forest type" << std::endl;
 
 
