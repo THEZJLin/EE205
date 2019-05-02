@@ -20,17 +20,6 @@ void Movement::draw(){
 		for(std::vector<Square*>::iterator it=map->square.begin();it!=map->square.end();++it) {
 		game->window.draw((*it)->rect);
 		}
-		//show population to side of grid
-		population.setFont(font);
-		population.setCharacterSize(TXTSIZE);
-		population.setFontColor(Color::White);
-		population.setPosition(Vector2f(710, 10));
-	
-		//show terrain to side of grid
-		terrain.setFont(font);
-		terrain.setCharacterSize(TXTSIZE);
-		terrain.setFontColor(Color::White);
-		terrain.setPosition(Vector2f(710, 30));
 }
 void Movement::update(){
 
