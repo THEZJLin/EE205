@@ -1,4 +1,5 @@
 #include "action.hpp"
+#include "movement.hpp"
 Action::Action(Game* game_, Map* map_) {
      game = game_; 
      map = map_; 
@@ -16,6 +17,7 @@ void Action::update() {
 
 void Action::handleInput() {
      if(game->event.type == Event::KeyPressed) {
-          game->window.close();
+          game->pushState(new Movement(map, game));
           }
 }
+
