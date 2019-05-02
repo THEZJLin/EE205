@@ -8,6 +8,7 @@
 
 //Grid parameters
 #define MAP_DIM 20
+#define SPAWN1 20
 
 //The "map" used in the game, consists of a grid of "Square" objects
 class Map {
@@ -15,7 +16,7 @@ class Map {
           //Constructor and destructor
           Map();
           ~Map();
-
+          void setSpawn(int s);
           //squares making up the map are stored here
           std::vector<Square*> square;
 
