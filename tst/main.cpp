@@ -32,6 +32,7 @@ int main() {
           //Push buffer to screen
           game.window.display();
      }
+     std::cout << "ending program" << std::endl;
 }
 
 

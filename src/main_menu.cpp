@@ -3,6 +3,7 @@
 #include "state_man.hpp"
 #include "action.hpp"
 #include "map.hpp"
+#include "paths.hpp"
 
 #include <SFML/Graphics.hpp>
      using namespace sf;
@@ -11,10 +12,45 @@
 //Constructor
 Main_Menu::Main_Menu(Game* game_) {
 if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
+
+     //Load in menu font, throw an exception if font not found
+     if(!font.loadFromFile(MENU_FONT)) {
+
+          throw "Font not loaded";
+
+     }
+
+     //Set text
+     title.setFont(font);
+     title.setString("SOCIETY");
+     title.setCharacterSize(TITLESIZE);
+
+     publisher.setFont(font);
+     publisher.setString("By: Team DZJK");
+     publisher.setCharacterSize(PUBSIZE);
+     
+     button_1.setFont(font);
+     button_1.setString("Play");
+     button_1.setCharacterSize(TXTSIZE);
+     
+     button_2.setFont(font);
+     button_2.setString("Tutorial");
+     button_2.setCharacterSize(TXTSIZE);
+     
+     button_3.setFont(font);
+     button_3.setString("Quit");
+     button_3.setCharacterSize(TXTSIZE);
+     //Set text position
+     title.setPosition(Vector2f(TITLEPOS));
+     publisher.setPosition(Vector2f(PUBPOS-20.f));
+     button_1.setPosition(Vector2f(PLAYPOS-20.f));
+     button_2.setPosition(Vector2f(TUTPOS-20.f));
+     button_3.setPosition(Vector2f(EXITPOS-20.f));
+
      //Set button size
-     play_rect = RectangleShape(Vector2f(HSIZE, VSIZE));
-     opt_rect = RectangleShape(Vector2f(HSIZE, VSIZE));
-     exit_rect = RectangleShape(Vector2f(HSIZE, VSIZE));
+     play_rect = RectangleShape(Vector2f(HSIZE1, VSIZE));
+     opt_rect = RectangleShape(Vector2f(HSIZE2, VSIZE));
+     exit_rect = RectangleShape(Vector2f(HSIZE3, VSIZE));
      //Set button texture/color
      play_rect.setFillColor(Color(100, 250, 50));
      opt_rect.setFillColor(Color(100, 250, 50));
@@ -22,16 +58,9 @@ if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
 
      //Set button location
      play_rect.setPosition(Vector2f(PLAYPOS));
-     opt_rect.setPosition(Vector2f(OPTPOS));
+     opt_rect.setPosition(Vector2f(TUTPOS));
      exit_rect.setPosition(Vector2f(EXITPOS));
 
-     ////Set Title text
-     //title.setFont();
-     //title.setString(TITLE);
-     //title.setCharacterSize(450);
-     //title.setFillColor(Color::Green);
-     //title.setStyle(Text::Bold | Text::Underlined);
-     //Set other variables
      selected = start;
      n = 0;
 
@@ -46,6 +75,11 @@ void Main_Menu::draw() {
      game->window.draw(play_rect);
      game->window.draw(opt_rect);
      game->window.draw(exit_rect);
+     game->window.draw(title);
+     game->window.draw(publisher);
+     game->window.draw(button_1);
+     game->window.draw(button_2);
+     game->window.draw(button_3);
 }
 
 void Main_Menu::update() {
@@ -110,5 +144,5 @@ void Main_Menu::handleInput() {
                       }
 
                  }
-                      }
+}
 

@@ -22,8 +22,11 @@ void Game::pushState(GameState* state) {
 
 //Removes current state, and thus, goes back to last state
 void Game::popState() {
-     delete states.top();
+     GameState* temp;
+     temp = states.top();
      states.pop();
+     delete temp;
+     std::cout << "popping state from stack" << std::endl;
 }
 
 //Returns enumerator with current state
@@ -41,5 +44,6 @@ Game::~Game() {
      while(!states.empty()) {
           popState();
      }
+     cout << "destructor finished" << endl;
 }
      

@@ -8,12 +8,22 @@
 #include <iostream>
 
 //Specifiers to alter button appearance
-#define TITLE "PLACEHOLDER"
-#define HSIZE 1200.f
-#define VSIZE 250.f
-#define PLAYPOS 250,900
-#define OPTPOS 250.f,1200.f
-#define EXITPOS 250.f,1500.f
+#define TITLE "SOCIETY"
+//Size for buttons 1-3
+#define HSIZE1 1800.f
+#define HSIZE2 1000.f
+#define HSIZE3 500.f
+#define VSIZE 150.f
+//Specifiers for text size
+#define TITLESIZE 425
+#define PUBSIZE 124
+#define TXTSIZE 148
+//Specifiers for element positions
+#define TITLEPOS 0.f,150.f
+#define PUBPOS 0.f,776.f
+#define PLAYPOS 0.f,900.f
+#define TUTPOS 0.f,1200.f
+#define EXITPOS 0.f,1500.f
 
 //Value to control debug statements
 #define DEBUG 1
@@ -37,13 +47,18 @@ class Main_Menu : public GameState
        RectangleShape opt_rect;
        RectangleShape exit_rect;
 
-       //Title text
-       Text title;
+       //Menu font
+       Font font;
 
-       //Button text
-      // Text play;
-      // Text option;
-      // Text exit;
+       //Setters
+       //void set_Text(int size_, int pos_)
+
+       // text
+       Text title;
+       Text publisher;
+       Text button_1;
+       Text button_2;
+       Text button_3;
 
        //Enumerator to keep track of button position
        enum select { start, options, exit };
