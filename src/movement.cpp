@@ -30,7 +30,7 @@ void Movement::handleInput(){
 	case sf::Keyboard::Up: //move up, -n
 		if(i <= MAP_DIM-1){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Green); 
+				map->square[i]->rect.setFillColor(Color::Yellow); 
 				i = i - MAP_DIM;
 				map->square[i]->rect.setFillColor(Color::Black);
 			}
@@ -38,7 +38,7 @@ void Movement::handleInput(){
 	case sf::Keyboard::Down: //move down, +n
 		if(i >((MAP_DIM * MAP_DIM) - MAP_DIM)){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Green);
+				map->square[i]->rect.setFillColor(Color::Yellow);
 				i = i + MAP_DIM;
 				map->square[i]->rect.setFillColor(Color::Black);
 			}	
@@ -47,7 +47,7 @@ void Movement::handleInput(){
 		//if current a multiple of 20, don't do anything
 		if((i)%MAP_DIM == 0){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Green);
+				map->square[i]->rect.setFillColor(Color::Yellow);
 				i = i-1;
 				map->square[i]->rect.setFillColor(Color::Black);
 			}
@@ -56,7 +56,7 @@ void Movement::handleInput(){
 		//if current +1 is a multiple of 20, don't do anything
 		if((i+1)%MAP_DIM == 0){}
 			else{
-				map->square[i]->rect.setFillColor(Color::Green);
+				map->square[i]->rect.setFillColor(Color::Yellow);
 				i = i+1;
 				map->square[i]->rect.setFillColor(Color::Black);
 
