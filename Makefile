@@ -16,7 +16,6 @@ grid_test: ./src/grid.o
 	g++ ./src/grid.o -o ./tst/grid_test.out $(SFMLFLAGS)
 	./tst/grid_test.out
 
-
 #==========================================================================================================
 
 #Commands to create .o files
@@ -39,7 +38,9 @@ grid_test: ./src/grid.o
 ./tst/main.o: ./tst/main.cpp ./bin/map.hpp ./bin/main_menu.hpp ./bin/action.hpp
 	g++ -c ./tst/main.cpp -I./bin/ -o ./tst/main.o
 
-
+./src/movement.o: ./src/movement.hpp ./bin/map.hpp ./bin/game.hpp
+	g++ -c ./src/grid.cpp -o ./src/movement.cpp
+	
 #Individual function proof of concepts
 
 ./src/menu_test.o: ./src/menu_test.cpp 
