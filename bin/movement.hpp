@@ -20,7 +20,5 @@ class Movement:public GameState{
 	void update();
 	void handleInput();
 	int i;
-	Text population;
-	Text terrain;
 	};
 #endif 
