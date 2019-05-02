@@ -7,7 +7,6 @@ Square::Square(int x_pos, int y_pos, int n_) {
      rect = RectangleShape(Vector2f(SIZE, SIZE));
 
 //==Place holder color until texture is implemented==
-     rect.setFillColor(Color::Green);
      rect.setOutlineThickness(1);
      rect.setOutlineColor(Color::Red);
 //===================================================
@@ -67,4 +66,11 @@ std::cout << "Terrain is being set" << std::endl;
           }
      }
 
-//Square::setBuilding
+void Square::setBuilding(building b) {
+     if (b == temple) {
+          buildingType = temple;
+          //bool loadFromFile(const std::string &./resources/GodTemple.png);
+     }
+
+
+}
