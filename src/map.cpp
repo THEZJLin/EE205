@@ -15,6 +15,7 @@ Map::Map() {
                n++;
           }
      }
+     total_deaths = 0;
 
 }
 
@@ -65,12 +66,9 @@ void Map::updatePop() {
           tot_deaths += tile_deaths;
 
           //Expand population to adjacent tiles if population threshold is met
-          std::cout<<"debug1"<<std::endl;
           expandPop(it);
-          std::cout<<"debug2"<<std::endl;
 
 
-if(DEBUG) std::cout << "i = "<<i<<"pop="<<square[i]->pop<<std::endl;
 
           //(PLACEHOLDER) Change fill color if square is occupied
           if((*it)->pop != 0) {
@@ -78,6 +76,8 @@ if(DEBUG) std::cout << "i = "<<i<<"pop="<<square[i]->pop<<std::endl;
           }
 
      }
+total_deaths += tot_deaths;
+if(DEBUG) std::cout << "deaths = "<<total_deaths<<std::endl;
 }
 
 //Takes in an iterator to the map vector. If a tile hits a certain population, part of the population will head out to adjacent tiles

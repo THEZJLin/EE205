@@ -45,4 +45,4 @@ int main() {
 //g++ -c ./tst/tileType_test.cpp -I./bin/ -o ./tst/tileType_test.o
 
 
-//g++ ./tst/tileType_test.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o  -o ./tst/a.out -lsfml-graphics -lsfml-window -lsfml-system
+//g++ ./tst/tileType_test.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o  -o ./tst/a.out -lsfml-graphics -lsfml-window -lsfml-system

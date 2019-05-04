@@ -25,7 +25,7 @@ Square::Square(int x_pos, int y_pos, int n_) {
 
 //Terrain modifiers
 void Square::setTileType(terrain t) {
-std::cout << "Terrain is being set" << std::endl;
+//std::cout << "Terrain is being set" << std::endl;
      switch(t) {
           case plain: 
                birth = birth * 1;

@@ -31,6 +31,8 @@ class Map {
           void updatePop();
           void expandPop(std::vector<Square*>::iterator tile);
 
+          int total_deaths;
+
      private:
 
           //current number of squares in grid
