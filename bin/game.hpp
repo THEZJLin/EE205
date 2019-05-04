@@ -36,6 +36,7 @@ class Game {
           //sfml window
           sf::RenderWindow window;
           sf::Event event;
+          sf::VideoMode desktop;
 
      private:
           stack<GameState*> states;

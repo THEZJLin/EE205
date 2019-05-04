@@ -11,8 +11,8 @@ int main() {
 //     Event event;
 
      //Initialize objects needed for game state (always starts at Main Menu)
-     Map map;
      Game game;
+     Map map(&game);
      game.pushState(new Main_Menu(&game, &map));
 map.square[0]->setTileType(plain);
      //Run until window closes

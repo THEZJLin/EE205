@@ -9,7 +9,12 @@
 //constructor, takes in a game title string
 Game::Game() {
 if(DEBUG) std::cout << "Initializing game object" << std::endl;
-     window.create(VideoMode(1800,1800), "Game");
+     //Get resolution of machine
+     desktop = VideoMode::getDesktopMode();
+
+     //create game window
+     window.create(desktop, "Society");
+
      //Game always starts at start menu
      current = Start;
 if(DEBUG) std::cout << "Initialized game object" << std::endl;

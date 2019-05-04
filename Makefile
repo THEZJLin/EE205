@@ -26,7 +26,7 @@ grid_test: ./src/grid.o
 ./src/action.o: ./src/action.cpp ./bin/action.hpp ./src/map.cpp ./bin/map.hpp ./bin/game.hpp ./bin/state_man.hpp
 	g++ -c ./src/action.cpp -I./bin/ -o ./src/action.o
 
-./src/map.o: ./src/map.cpp ./bin/map.hpp ./src/game.cpp ./bin/game.hpp ./src/square.cpp ./bin/square.hpp
+./src/map.o: ./src/map.cpp ./bin/map.hpp ./src/game.cpp ./bin/game.hpp ./src/square.cpp ./bin/square.hpp ./src/game.cpp ./bin/game.hpp
 	g++ -c ./src/map.cpp -I./bin/ -o ./src/map.o
 
 ./src/square.o: ./src/square.cpp ./bin/square.hpp

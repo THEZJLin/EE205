@@ -7,7 +7,6 @@
 #include <iostream>
 
 //Parameter aliases
-#define SIZE 100
 #define SPAWN1 20
 //Alias for tyleType
 enum terrain {plain, forest, desert, ocean, mountain};
@@ -25,7 +24,7 @@ class Square {
           float death;
 
           //Constructor
-          Square(int x_pos, int y_pos, int n_);
+          Square(int x_pos, int y_pos, int size_, int n_);
 
           //Graphical appearance
           RectangleShape rect;
