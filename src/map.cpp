@@ -1,13 +1,19 @@
 #include "map.hpp"
 
 //Constructor, creates new squares and pushes them into the map vector
-Map::Map() {
+Map::Map(Game* game) {
      n = 0;
+
+     //Calculate square size based on current screen resolution
+     float size;
+     size = ( ((game->desktop.height)*PERCENT) / MAP_DIM );
+     
+     //Create squares and push them into vector
      for(int j=0; j<MAP_DIM; j++) {
           for(int i=0; i<MAP_DIM; i++) {
                //Coordinates of new square are modified by the "SIZE"
                //alias defined in square.cpp
-               square.push_back(new Square(i*SIZE,j*SIZE,n));
+               square.push_back(new Square(i*size,j*size,size,n));
                //Defualts all of the map tiles to have forest terrain
                (*(square.rbegin()))->setTileType(forest);
                //n is incremented to avoid 2 squares having the same

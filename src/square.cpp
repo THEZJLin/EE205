@@ -1,10 +1,10 @@
 #include "square.hpp"
 
 //Constructor, sets coordinates with given input arguments
-Square::Square(int x_pos, int y_pos, int n_) {
+Square::Square(int x_pos, int y_pos, int size_, int n_) {
 
      //Set graphical appearance of square
-     rect = RectangleShape(Vector2f(SIZE, SIZE));
+     rect = RectangleShape(Vector2f(size_, size_));
 
 //==Place holder color until texture is implemented==
      rect.setOutlineThickness(1);
