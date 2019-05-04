@@ -17,9 +17,6 @@ class Square {
      public:
           //Parameters
 
-          //Population on square
-          int population = 0;
-
           //Terrain of square
           terrain tileType;
           building buildingType;
@@ -45,11 +42,12 @@ class Square {
           void setBuilding(building b);
           //Getters
 
-     private:
           //Unique square identifier
           unsigned n;
           //Population parameter, vector stores population of all factions on square
-          std::vector<unsigned> pop;
+          int pop;
+
+     private:
 
 };
 

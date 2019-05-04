@@ -9,7 +9,8 @@ Movement::Movement(Map* map_,Game* game_){
 	map = map_;
 	game = game_;
 	i=0;
-	
+  //(PLACEHOLDER) spawnpoint for testing
+  map->setPop(0);
 }	
 
 void Movement::draw(){
@@ -19,6 +20,8 @@ void Movement::draw(){
 		}
 }
 void Movement::update(){
+     std::cout<<"updating screen"<<std::endl;
+     map->updatePop();
 
 }
 void Movement::handleInput(){
