@@ -10,21 +10,25 @@
 //Specifiers to alter button appearance
 #define TITLE "SOCIETY"
 //Size for buttons 1-3
-#define HSIZE1 1800.f
-#define HSIZE2 1000.f
-#define HSIZE3 500.f
-#define VSIZE 150.f
+#define HSIZE1 game_->desktop.width
+#define HSIZE2 game_->desktop.width * .5555
+#define HSIZE3 game_->desktop.width * .2777
+#define VSIZE  game_->desktop.width * .0549
 //Specifiers for text size
-#define TITLESIZE 425
-#define PUBSIZE 124
-#define TXTSIZE 148
+#define TITLESIZE game_->desktop.height * .225
+#define PUBSIZE game_->desktop.height * .0688
+#define TXTSIZE game_->desktop.height * .0822
 //Specifiers for element positions
-#define TITLEPOS 0.f,150.f
-#define PUBPOS 0.f,776.f
-#define PLAYPOS 0.f,900.f
-#define TUTPOS 0.f,1200.f
-#define EXITPOS 0.f,1500.f
-
+#define TITLEPOS 0.f,game_->desktop.height*.0625
+#define PUBPOS 0.f,game_->desktop.height*.4311
+#define PLAYPOS 0.f,game_->desktop.height*.5
+#define TUTPOS 0.f,game_->desktop.height*.6666
+#define EXITPOS 0.f,game_->desktop.height*.8333
+//Specifiers for button text positions (offset by 20.f)
+#define PUBPOST 0.f,(game_->desktop.height*.43111)-(game_->desktop.height*.011)
+#define PLAYPOST 0.f,(game_->desktop.height*.5000)-(game_->desktop.height*.011)
+#define TUTPOST 0.f,(game_->desktop.height*.66666)-(game_->desktop.height*.011)
+#define EXITPOST 0.f,(game_->desktop.height*.8333)-(game_->desktop.height*.011)
 //Value to control debug statements
 #define DEBUG 1
 

@@ -42,10 +42,10 @@ if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
      button_3.setCharacterSize(TXTSIZE);
      //Set text position
      title.setPosition(Vector2f(TITLEPOS));
-     publisher.setPosition(Vector2f(PUBPOS-20.f));
-     button_1.setPosition(Vector2f(PLAYPOS-20.f));
-     button_2.setPosition(Vector2f(TUTPOS-20.f));
-     button_3.setPosition(Vector2f(EXITPOS-20.f));
+     publisher.setPosition(Vector2f(PUBPOST));
+     button_1.setPosition(Vector2f(PLAYPOST));
+     button_2.setPosition(Vector2f(TUTPOST));
+     button_3.setPosition(Vector2f(EXITPOST));
 
      //Set button size
      play_rect = RectangleShape(Vector2f(HSIZE1, VSIZE));
