@@ -13,7 +13,7 @@
 #define HSIZE1 game_->desktop.width
 #define HSIZE2 game_->desktop.width * .5555
 #define HSIZE3 game_->desktop.width * .2777
-#define VSIZE  game_->desktop.width * .0549
+#define VSIZE  game_->desktop.height * .0833
 //Specifiers for text size
 #define TITLESIZE game_->desktop.height * .225
 #define PUBSIZE game_->desktop.height * .0688
