@@ -5,6 +5,7 @@
 #include "map.hpp"
 #include "state_man.hpp"
 #include "movement.hpp"
+#include "console.hpp"
 
 //This class is a placeholder for testing map
 class Action : public GameState {
@@ -17,6 +18,7 @@ class Action : public GameState {
           void handleInput();
 
      private:
+          Console log;
 };
 
 #endif
