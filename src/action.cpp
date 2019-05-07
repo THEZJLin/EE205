@@ -1,5 +1,6 @@
 #include "action.hpp"
 #include "movement.hpp"
+#include "turn.hpp"
 
 //Test state to test various game elements
 
@@ -26,7 +27,7 @@ void Action::handleInput() {
           switch(game->event.key.code) {
                //cases make use of "Console" class (in console.hpp/cpp)
                case(Keyboard::Return): 
-                    log.pushEntry("a or b to push test messages to console, c to change states");
+                    log.pushEntry("a or b to push test messages to console, c or d to change states");
                break;
 
                case(Keyboard::A):
@@ -39,6 +40,10 @@ void Action::handleInput() {
 
                case(Keyboard::C):
                     game->pushState(new Movement(map, game));
+                    break;
+
+               case(Keyboard::D):
+                    game->pushState(new Turn(game, map, &log));
                     break;
 
                default:

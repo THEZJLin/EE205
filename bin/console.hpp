@@ -30,6 +30,9 @@ class Console {
           //Function to clear log
           void clear();
 
+          //Getter to return reference to font
+          sf::Font& getFont();
+
      private:
           //Text drawn to screen
           sf::Text title;

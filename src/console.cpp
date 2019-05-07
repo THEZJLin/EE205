@@ -60,6 +60,14 @@ void Console::pushEntry(std::string entry) {
 }
 
 
+//Getter to return font
+sf::Font& Console::getFont() {
+     
+     return font;
+
+}
+
+
 
 //Clears deque and thus, clears all messages from log
 void Console::clear() {

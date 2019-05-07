@@ -25,6 +25,9 @@ Map::Map(Game* game) {
 
 }
 
+
+
+
 //Destructor
 Map::~Map() {
      std::vector<Square*>::iterator it = square.begin();
@@ -37,10 +40,23 @@ Map::~Map() {
      }
 }
 
+
+//Function to draw map to screen
+void Map::draw(Game* game_) {
+     for(auto it : square) {
+             game_->window.draw(it->rect);
+     }
+}
+
+
+
+
 //Sets population of a square with index "n"
 void Map::setPop(int n_) {
      square[n_]->pop = 5;
 }
+
+
 
 //Population to grow population (should be called every turn)
 void Map::updatePop() {
@@ -85,6 +101,8 @@ void Map::updatePop() {
 total_deaths += tot_deaths;
 if(DEBUG) std::cout << "deaths = "<<total_deaths<<std::endl;
 }
+
+
 
 //Takes in an iterator to the map vector. If a tile hits a certain population, part of the population will head out to adjacent tiles
 void Map::expandPop(std::vector<Square*>::iterator tile) {
