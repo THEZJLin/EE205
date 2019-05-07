@@ -42,6 +42,9 @@ class Map {
           //squares making up the map are stored here
           std::vector<Square*> square;
 
+          //function to draw map to screen
+          void draw(Game* game_);
+
      private:
 
           //current number of squares in grid
