@@ -4,8 +4,8 @@ SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 #Commands to create executable files
 
-main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o
-	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o -o ./tst/a.out $(SFMLFLAGS)
+main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o
+	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o -o ./tst/a.out $(SFMLFLAGS)
 	./tst/a.out
 
 menu_test: ./src/menu_test.o 
@@ -23,7 +23,7 @@ grid_test: ./src/grid.o
 ./src/main_menu.o: ./src/main_menu.cpp ./bin/main_menu.hpp ./src/game.cpp ./bin/game.hpp ./bin/state_man.hpp ./src/map.cpp ./bin/map.hpp
 	g++ -c ./src/main_menu.cpp -I./bin/ -o ./src/main_menu.o
 
-./src/action.o: ./src/action.cpp ./bin/action.hpp ./src/map.cpp ./bin/map.hpp ./bin/game.hpp ./bin/state_man.hpp
+./src/action.o: ./src/action.cpp ./bin/action.hpp ./src/map.cpp ./bin/map.hpp ./bin/game.hpp ./bin/state_man.hpp ./bin/player.hpp ./src/player.cpp
 	g++ -c ./src/action.cpp -I./bin/ -o ./src/action.o
 
 ./src/map.o: ./src/map.cpp ./bin/map.hpp ./src/game.cpp ./bin/game.hpp ./src/square.cpp ./bin/square.hpp ./src/game.cpp ./bin/game.hpp
@@ -38,7 +38,7 @@ grid_test: ./src/grid.o
 ./src/console.o: ./bin/console.hpp ./src/console.cpp ./bin/map.hpp ./bin/game.hpp ./src/game.cpp ./bin/paths.hpp
 	g++ -c ./src/console.cpp -I./bin/ -o ./src/console.o
 
-./src/turn.o: ./bin/turn.hpp ./src/turn.cpp ./bin/map.hpp ./src/map.cpp ./bin/game.hpp ./src/game.cpp ./bin/state_man.hpp ./bin/paths.hpp
+./src/turn.o: ./bin/turn.hpp ./src/turn.cpp ./bin/map.hpp ./src/map.cpp ./bin/game.hpp ./src/game.cpp ./bin/state_man.hpp ./bin/paths.hpp ./bin/player.hpp ./src/player.cpp
 	g++ -c ./src/turn.cpp -I./bin/ -o ./src/turn.o
 
 ./tst/main.o: ./tst/main.cpp ./bin/map.hpp ./bin/main_menu.hpp ./bin/action.hpp
@@ -46,6 +46,9 @@ grid_test: ./src/grid.o
 
 ./src/movement.o: ./bin/movement.hpp ./src/movement.cpp ./bin/map.hpp ./src/map.cpp ./bin/game.hpp ./bin/action.hpp ./src/action.cpp
 	g++ -c ./src/movement.cpp -I./bin/ -o ./src/movement.o
+
+./src/player.o: ./bin/player.hpp ./src/player.cpp
+	g++ -c ./src/player.cpp -I./bin/ -o ./src/player.o
 	
 #Individual function proof of concepts
 

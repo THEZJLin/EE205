@@ -20,6 +20,9 @@ Square::Square(int x_pos, int y_pos, int size_, int n_) {
      birth = .9;
      death = .9;
      pop = 0;
+
+     //Set ownership value
+     ownedBy = None;
 }
 //Sets Population value in a square
 

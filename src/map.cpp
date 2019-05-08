@@ -30,14 +30,20 @@ Map::Map(Game* game) {
 
 //Destructor
 Map::~Map() {
+     int i = 0;
+     std::cout << "calling map deconstructor" << std::endl;
      std::vector<Square*>::iterator it = square.begin();
      std::vector<Square*>::iterator it2;
      while(it != square.end()) {
+     std::cout << "deleting: " << i << std::endl;
           it2 = it;
           it++;
           delete *it2;
+          std::cout << "deleted: " << i << std::endl;
+     i++;
 
      }
+     std::cout << "map deconstructor complete!" <<std::endl;
 }
 
 
@@ -51,15 +57,16 @@ void Map::draw(Game* game_) {
 
 
 
-//Sets population of a square with index "n"
-void Map::setPop(int n_) {
-     square[n_]->pop = 5;
+//Sets population and ownership of a square with index "n"
+void Map::setPop(int n_, faction ownedBy_) {
+     square[n_]->pop = 100;
+     square[n_]->ownedBy = ownedBy_;
 }
 
 
 
-//Population to grow population (should be called every turn)
-void Map::updatePop() {
+//Population to grow population (should be called every turn), returns deaths
+float Map::updatePop(faction fact) {
      //Variables to keep track of births/deaths for current square
      int tile_births;
      int tile_deaths;
@@ -70,7 +77,8 @@ void Map::updatePop() {
      int i = 0;
 
      //Used to keep track of current square
-     for(vector<Square*>::iterator it = square.begin();it!=square.end();++it) {
+     for(vector<Square*>::iterator it=square.begin();it!=square.end();++it) {
+     if(fact == (*it)->ownedBy) {
           //Calculate births and add to square population
           tile_births = (int) (((*it)->pop) * ((*it)->birth));
           
@@ -92,14 +100,18 @@ void Map::updatePop() {
 
 
 
-          //(PLACEHOLDER) Change fill color if square is occupied
-          if((*it)->pop != 0) {
-               (*it)->rect.setFillColor(Color::Red);
-          }
+     }
+     //(PLACEHOLDER) Change fill color if square is occupied
+     if((*it)->ownedBy == Christians) {
+           (*it)->rect.setFillColor(Color::Red);
+      }
+      else if((*it)->ownedBy == Greeks) {(*it)->rect.setFillColor(Color::Blue);}
 
      }
-total_deaths += tot_deaths;
-if(DEBUG) std::cout << "deaths = "<<total_deaths<<std::endl;
+     
+     total_deaths += tot_deaths;
+
+     return total_deaths;
 }
 
 
@@ -115,6 +127,9 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
                if(tile[-MAP_DIM]->pop < MAX) {
                     (*tile)->pop -= SETTLERS;
                     tile[-MAP_DIM]->pop += SETTLERS;
+                    //Set tile ownership
+                    tile[-MAP_DIM]->ownedBy = (*tile)->ownedBy;
+
                }
           }
 
@@ -124,6 +139,8 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
                if(tile[MAP_DIM]->pop < MAX) {
                     (*tile)->pop -= SETTLERS;
                     tile[MAP_DIM]->pop += SETTLERS;
+                    //Set tile ownership
+                    tile[MAP_DIM]->ownedBy = (*tile)->ownedBy;
                }
           }
           
@@ -133,6 +150,8 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
                if(tile[LEFT]->pop < MAX) {
                     (*tile)->pop -= SETTLERS;
                     tile[LEFT]->pop += SETTLERS;
+                    //Set tile ownership
+                    tile[LEFT]->ownedBy = (*tile)->ownedBy;
                }
           }
 
@@ -142,6 +161,8 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
                if(tile[RIGHT]->pop < MAX) {
                     (*tile)->pop -= SETTLERS;
                     tile[RIGHT]->pop += SETTLERS;
+                    //Set tile ownership
+                    tile[RIGHT]->ownedBy = (*tile)->ownedBy;
                }
           }
      }

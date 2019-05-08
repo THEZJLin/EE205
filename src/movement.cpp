@@ -10,7 +10,7 @@ Movement::Movement(Map* map_,Game* game_){
 	game = game_;
 	i=0;
   //(PLACEHOLDER) spawnpoint for testing
-  map->setPop(0);
+  map->setPop(0,Christians);
 }	
 
 void Movement::draw(){
@@ -21,7 +21,7 @@ void Movement::draw(){
 }
 void Movement::update(){
      std::cout<<"updating screen"<<std::endl;
-     map->updatePop();
+     map->updatePop(Christians);
 
 }
 void Movement::handleInput(){
