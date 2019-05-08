@@ -3,11 +3,13 @@
 
 
 //Constructor
-Turn::Turn(Game* game_, Map* map_, Console* log_) :  
+Turn::Turn(Game* game_, Map* map_, Console* log_, Player* player_) :  
                                                     viewTileTxt("Explore",log_->getFont(),game_->desktop.height*.1),
                                                     buildTxt("Build",log_->getFont(),game_->desktop.height*.1),
                                                     skillTxt("Skills",log_->getFont(),game_->desktop.height*.1),
-                                                    endTurnTxt("End Turn",log_->getFont(),game_->desktop.height*.1) {
+                                                    endTurnTxt("End Turn",log_->getFont(),game_->desktop.height*.1), 
+                                                    soulsTxt("Souls: ",log_->getFont(),game_->desktop.height*.05), 
+                                                    player(player_) {
      
      //Set inherited pointers
      game = game_;
@@ -39,6 +41,8 @@ Turn::Turn(Game* game_, Map* map_, Console* log_) :
      endTurn.setPosition(3*sizeX,posY);
      endTurnTxt.setPosition(3*sizeX,posY);
 
+     soulsTxt.setPosition(game->desktop.height*PERCENT,posY*(.75/.8));
+
      //Add buttons to vector
      menButt.push_back(viewTile);
      menButt.push_back(build);
@@ -50,10 +54,15 @@ Turn::Turn(Game* game_, Map* map_, Console* log_) :
      n = 0;
 
      //Add text to vector
-     menTxt.push_back(viewTileTxt);
-     menTxt.push_back(buildTxt);
-     menTxt.push_back(skillTxt);
-     menTxt.push_back(endTurnTxt);
+     menTxt.push_back(&soulsTxt);
+     menTxt.push_back(&viewTileTxt);
+     menTxt.push_back(&buildTxt);
+     menTxt.push_back(&skillTxt);
+     menTxt.push_back(&endTurnTxt);
+
+     stringstream ss;
+     ss << "Start Turn: " << player->getFaction();
+     log->pushEntry(ss.str());
 }
 
 
@@ -72,7 +81,10 @@ void Turn::handleInput() {
                     if(n == 0) {log->pushEntry("View state pushed");}
                     if(n == 1) {log->pushEntry("Build state pushed");}
                     if(n == 2) {log->pushEntry("Skill state pushed");}
-                    if(n == 3) {log->pushEntry("Turn end"); game->popState();}
+                    if(n == 3) {log->pushEntry("Turn end"); 
+                                player->addSouls(map->updatePop(player->getFaction()));
+                                game->popState();}
+
                     break;
 
 
@@ -110,6 +122,11 @@ void Turn::update() {
      //Set selected button to a different color
      it->setFillColor(Color::Red);
 
+     //Update total souls
+     stringstream ss;
+     ss << "Souls: "<< player->getSouls();
+     soulsTxt.setString(ss.str());
+
 }
 
 
@@ -123,6 +140,7 @@ void Turn::draw() {
      //Draw buttons
      for(auto i : menButt) { game->window.draw(i); }
      //Draw text
-     for(auto i : menTxt) { game->window.draw(i); }
+     for(auto i : menTxt) { game->window.draw(*i); }
+     //game->window.draw(soulsTxt);
 
 }

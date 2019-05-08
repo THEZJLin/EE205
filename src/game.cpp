@@ -29,9 +29,10 @@ void Game::pushState(GameState* state) {
 void Game::popState() {
      GameState* temp;
      temp = states.top();
+     std::cout << "popping state from stack" << std::endl;
      states.pop();
      delete temp;
-     std::cout << "popping state from stack" << std::endl;
+     std::cout << "popped state from stack" << std::endl;
 }
 
 //Returns enumerator with current state
@@ -46,6 +47,7 @@ GameState* Game::getState() {
 
 //Destructor
 Game::~Game() {
+     cout << "calling destructor" << endl;
      while(!states.empty()) {
           popState();
      }
