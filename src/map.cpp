@@ -7,7 +7,7 @@ Map::Map(Game* game) {
      //Calculate square size based on current screen resolution
      float size;
      size = ( ((game->desktop.height)*PERCENT) / MAP_DIM );
-     
+
      //Create squares and push them into vector
      for(int j=0; j<MAP_DIM; j++) {
           for(int i=0; i<MAP_DIM; i++) {
@@ -77,11 +77,11 @@ float Map::updatePop(faction fact) {
      int i = 0;
 
      //Used to keep track of current square
-     for(vector<Square*>::iterator it=square.begin();it!=square.end();++it) {
-     if(fact == (*it)->ownedBy) {
+     for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it) {
+		 if(fact == (*it)->ownedBy) {
           //Calculate births and add to square population
           tile_births = (int) (((*it)->pop) * ((*it)->birth));
-          
+
           //Calculate deaths and subtract from square population
           tile_deaths = (int) (((*it)->pop) * ((*it)->death));
           (*it)->pop += tile_births - tile_deaths;
@@ -95,10 +95,6 @@ float Map::updatePop(faction fact) {
           tot_births += tile_births;
           tot_deaths += tile_deaths;
 
-          //Expand population to adjacent tiles if population threshold is met
-          expandPop(it);
-
-
 
      }
      //(PLACEHOLDER) Change fill color if square is occupied
@@ -108,23 +104,43 @@ float Map::updatePop(faction fact) {
       else if((*it)->ownedBy == Greeks) {(*it)->rect.setFillColor(Color::Blue);}
 
      }
-     
-     total_deaths += tot_deaths;
+		 for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it)
+		 {//Expand population to adjacent tiles if population threshold is met
+		 expandPop(it);}
+
 
      return total_deaths;
 }
 
+void Map::Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
+{
+
+
+	if((*attacker)->pop > (*defender)->pop)
+	{
+		(*defender)->pop = 0;
+		(*defender)->ownedBy = (*attacker)->ownedBy;
+	}
+	else
+	{
+		(*attacker)->pop = 0;
+		(*attacker)->ownedBy = (*defender)->ownedBy;
+	}
+
+}
 
 
 //Takes in an iterator to the map vector. If a tile hits a certain population, part of the population will head out to adjacent tiles
 void Map::expandPop(std::vector<Square*>::iterator tile) {
      //If population is greater than threshold, check if adjacent tiles are available
      if((*tile)->pop >= THRESHOLD) {
-          
+
           //Check if tile is in bounds (tile above)
           if( (*tile)->n >= MAP_DIM ) {
                //Add settlers if population of adjacent tile is below max
                if(tile[-MAP_DIM]->pop < MAX) {
+								 if((*tile)->ownedBy != tile[-MAP_DIM]->ownedBy && tile[-MAP_DIM]->ownedBy != None)
+								 	{Attack(tile, (tile-MAP_DIM));}
                     (*tile)->pop -= SETTLERS;
                     tile[-MAP_DIM]->pop += SETTLERS;
                     //Set tile ownership
@@ -137,17 +153,21 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
           if( (*tile)->n < ((MAP_DIM*MAP_DIM) - MAP_DIM) ) {
                //Add settlers if population of adjacent tile is below max
                if(tile[MAP_DIM]->pop < MAX) {
+								 if((*tile)->ownedBy != tile[MAP_DIM]->ownedBy && tile[MAP_DIM]->ownedBy!=None)
+								 	{Attack(tile, (tile+MAP_DIM));}
                     (*tile)->pop -= SETTLERS;
                     tile[MAP_DIM]->pop += SETTLERS;
                     //Set tile ownership
                     tile[MAP_DIM]->ownedBy = (*tile)->ownedBy;
                }
           }
-          
+
           //Check if tile is in bounds (tile left)
           if( (*tile)->n % MAP_DIM ) {
                //Add settlers if population of adjacent tile is below max
                if(tile[LEFT]->pop < MAX) {
+								 if((*tile)->ownedBy != tile[LEFT]->ownedBy && tile[LEFT]->ownedBy != None)
+								 	{Attack(tile, (tile+LEFT));}
                     (*tile)->pop -= SETTLERS;
                     tile[LEFT]->pop += SETTLERS;
                     //Set tile ownership
@@ -159,6 +179,8 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
           if( (((*tile)->n)+1) % MAP_DIM ) {
                //Add settlers if population of adjacent tile is below max
                if(tile[RIGHT]->pop < MAX) {
+								 if((*tile)->ownedBy != tile[RIGHT]->ownedBy && tile[RIGHT]->ownedBy!=None)
+								 	{Attack(tile, (tile+RIGHT));}
                     (*tile)->pop -= SETTLERS;
                     tile[RIGHT]->pop += SETTLERS;
                     //Set tile ownership
