@@ -20,5 +20,10 @@ class Movement:public GameState{
 	void update();
 	void handleInput();
 	int i;
+	//This is the current cursors image
+     sf::Texture tex;
+     sf::Sprite cursorimage;
+	float xindex, yindex, percent, size;
+	int move;
 	};
 #endif 
