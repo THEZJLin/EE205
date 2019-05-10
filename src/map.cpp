@@ -118,7 +118,7 @@ float Map::updatePop(faction fact) {
           //(PLACEHOLDER) Change fill color if square is occupied
           if((*it)->ownedBy == Christians) {(*it)->rect.setFillColor(Color::Red);}
           else if((*it)->ownedBy == Greeks) {(*it)->rect.setFillColor(Color(100,100,200));}
-          else if((*it)->ownedBy == None) {(*it)->rect.setFillColor(Color(255,255,100));}
+          else if((*it)->ownedBy == None) {(*it)->rect.setFillColor(Color(255,255,255));}
 
      }
 
