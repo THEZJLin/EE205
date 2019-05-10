@@ -5,6 +5,8 @@
      using namespace sf;
 #include "game.hpp"
 #include "square.hpp"
+#include "paths.hpp"
+#include "utilities.hpp"
 #include <vector>
 
 //Grid parameters

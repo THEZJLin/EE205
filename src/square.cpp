@@ -27,44 +27,36 @@ Square::Square(int x_pos, int y_pos, int size_, int n_) {
 //Sets Population value in a square
 
 //Terrain modifiers
-void Square::setTileType(terrain t) {
-//std::cout << "Terrain is being set" << std::endl;
+void Square::setTileType(tileType t) {
      switch(t) {
           case plain: 
                birth = birth * 1;
                death = death * 1;
-               tileType = plain;
-               std::cout << tileType << std::endl;
-               rect.setFillColor(Color::Green);
+               terrain = plain;
                break;
 
           case forest : 
                birth = birth * 1.2;
                death = death * .8;
-               tileType = forest;
-               std::cout << tileType << std::endl;
-               rect.setFillColor(Color::Yellow);
+               terrain = forest;
                break;
 
           case desert :
                birth = birth * .8;
                death = death * 1.2;
-               tileType = desert;
-               std::cout << tileType << std::endl;
+               terrain = desert;
                break;
 
           case ocean :
                birth = 0;
                death = death * .2;
-               tileType = ocean;
-               std::cout << tileType << std::endl;
+               terrain = ocean;
                break;
                
           case mountain :
                birth = 0;
                death = 0;
-               tileType = mountain;
-               std::cout << tileType << std::endl;
+               terrain = mountain;
                break;
           }
      }

@@ -1,8 +1,14 @@
 #include "map.hpp"
+#include <fstream> //std::ifstream
+#include <string> //std::string, std::stoi
 
 //Constructor, creates new squares and pushes them into the map vector
 Map::Map(Game* game) {
      n = 0;
+
+     //Variables for loading in map from file
+     char c[2];
+     std::ifstream mapFile(DEFAULT);
 
      //Calculate square size based on current screen resolution
      float size;
@@ -14,13 +20,23 @@ Map::Map(Game* game) {
                //Coordinates of new square are modified by the "SIZE"
                //alias defined in square.cpp
                square.push_back(new Square(i*size,j*size,size,n));
-               //Defualts all of the map tiles to have forest terrain
-               (*(square.rbegin()))->setTileType(forest);
+
+               //Read in tile type from file
+               c[0] = mapFile.get();
+
+               //get next character if newline
+               while(c == "\n") { c[0] = mapFile.get(); }
+
+               //Convert string into enumerator and set tile type
+               (*(square.rbegin()))->setTileType(charToTileType(c[0]));
+
                //n is incremented to avoid 2 squares having the same
                //identifier
                n++;
           }
      }
+     //Close file
+     mapFile.close();
 }
 
 
