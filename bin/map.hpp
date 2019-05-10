@@ -5,13 +5,15 @@
      using namespace sf;
 #include "game.hpp"
 #include "square.hpp"
+#include "paths.hpp"
+#include "utilities.hpp"
 #include <vector>
 
 //Grid parameters
 #define MAP_DIM 15
 #define SPAWN1 20
 //Threshold before population expands to adjacent tiles
-#define THRESHOLD 15
+#define THRESHOLD 170
 #define MAX 200
 //Number of people that move to adjacent tiles upon reaching thresh
 #define SETTLERS 5

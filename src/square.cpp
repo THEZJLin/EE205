@@ -1,4 +1,5 @@
 #include "square.hpp"
+#include "texture_man.hpp"
 
 //Constructor, sets coordinates with given input arguments
 Square::Square(int x_pos, int y_pos, int size_, int n_) {
@@ -17,8 +18,6 @@ Square::Square(int x_pos, int y_pos, int size_, int n_) {
      //Set coordinates of first player's citizens
      //Assign values to square parameters
      n = n_;
-     birth = .9;
-     death = .9;
      pop = 0;
 
      //Set ownership value
@@ -27,44 +26,41 @@ Square::Square(int x_pos, int y_pos, int size_, int n_) {
 //Sets Population value in a square
 
 //Terrain modifiers
-void Square::setTileType(terrain t) {
-//std::cout << "Terrain is being set" << std::endl;
+void Square::setTileType(tileType t, TexManager& texManager) {
      switch(t) {
           case plain: 
-               birth = birth * 1;
-               death = death * 1;
-               tileType = plain;
-               std::cout << tileType << std::endl;
-               rect.setFillColor(Color::Green);
+               birth = .8;
+               death = .5;
+               terrain = plain;
+               rect.setTexture(&(texManager.getTex("plain")));
                break;
 
           case forest : 
-               birth = birth * 1.2;
-               death = death * .8;
-               tileType = forest;
-               std::cout << tileType << std::endl;
-               rect.setFillColor(Color::Yellow);
+               birth = .9;
+               death = .4;
+               terrain = forest;
+               rect.setTexture(&(texManager.getTex("forest")));
                break;
 
           case desert :
-               birth = birth * .8;
-               death = death * 1.2;
-               tileType = desert;
-               std::cout << tileType << std::endl;
+               birth = .5;
+               death = .9;
+               terrain = desert;
+               rect.setTexture(&(texManager.getTex("desert")));
                break;
 
           case ocean :
                birth = 0;
-               death = death * .2;
-               tileType = ocean;
-               std::cout << tileType << std::endl;
+               death = .5;
+               terrain = ocean;
+               rect.setTexture(&(texManager.getTex("ocean")));
                break;
                
           case mountain :
                birth = 0;
-               death = 0;
-               tileType = mountain;
-               std::cout << tileType << std::endl;
+               death = 1;
+               terrain = mountain;
+               rect.setTexture(&(texManager.getTex("mountain")));
                break;
           }
      }

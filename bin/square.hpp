@@ -7,52 +7,41 @@
 #include <iostream>
 
 #include "utilities.hpp"
+#include "texture_man.hpp"
 
 //Parameter aliases
 #define SPAWN1 20
-//Alias for tyleType
-enum terrain { plain, forest, desert, ocean, mountain };
+
 enum building { temple };
 //Class creates squares used in grid, it also stores game information (population, modifiers, etc)
 class Square {
      public:
-          //Parameters
-
-          //Terrain of square
-          terrain tileType;
-          building buildingType;
-          //Population growth rates
-          float birth;
-          float death;
-
-          
           //Constructor
           Square(int x_pos, int y_pos, int size_, int n_);
 
+          //Enumerators setting tile parameters
+          tileType terrain;
+          building buildingType;
+          faction ownedBy;
+
+          //Population growth rates
+          float birth;
+          float death;
           
           //Graphical appearance
           RectangleShape rect;
 
-          
-          //Setters
-          //setPopulation(int p);
-
           //Sets the terrain type of the square
-          void setTileType(terrain t);
-
-          
-          //Sets a texture of a building
+          void setTileType(tileType t,TexManager& texManager);
 
           //Sets a building in a square
           void setBuilding(building b);
-          //Getters
 
           
           //Unique square identifier
           unsigned n;
-          //Population parameter, vector stores population of all factions on square
+
           int pop;
-          faction ownedBy;
 
      private:
 

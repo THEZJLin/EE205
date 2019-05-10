@@ -1,20 +1,29 @@
 //Main file for testing
-
 #include "main_menu.hpp"
 #include "action.hpp"
 #include "map.hpp"
+#include "paths.hpp"
+#include <string>
 
 
 int main() {
-     //Create the window
-//     RenderWindow window(VideoMode(800, 600), "TEST");
-//     Event event;
-
      //Initialize objects needed for game state (always starts at Main Menu)
      Game game;
+
+//* Feel like hardcoding, IDK may delete later
+
+game.texManager.loadTex("plain",PLAIN);
+game.texManager.loadTex("forest",FOREST);
+game.texManager.loadTex("mountain",MOUNTAIN);
+game.texManager.loadTex("ocean",OCEAN);
+game.texManager.loadTex("desert",DESERT);
+
+//*
+
      Map map(&game);
      game.pushState(new Main_Menu(&game, &map));
-map.square[0]->setTileType(plain);
+
+
      //Run until window closes
      while(game.window.isOpen()) {
           //Read event
