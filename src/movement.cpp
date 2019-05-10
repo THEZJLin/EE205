@@ -15,13 +15,17 @@ Movement::Movement(Map* map_,Game* game_){
 	move;
   //(PLACEHOLDER) spawnpoint for testing
   map->setPop(0,Christians);
+
+	//set element coordinates
+	tex.loadFromFile("../Resources/Movement/cursor.png");
+	cursorimage.setPosition(xindex,yindex);
 }	
 
 void Movement::draw(){
 		game->window.clear();
-		for(std::vector<Square*>::iterator it=map->square.begin();it!=map->square.end();++it) {
-		game->window.draw((*it)->rect);
-		}
+          map->draw(game);
+          game->window.draw(cursorimage);
+		
 }
 void Movement::update(){
 
@@ -30,9 +34,6 @@ void Movement::update(){
      map->updatePop(Greeks);
 
 	//initializes key presses
-	//set element coordinates
-	tex.loadFromFile("../Resources/Movement/cursor.png");
-	cursorimage.setPosition(xindex,yindex);
 	//vector of square pointers
 	switch(move){
 	case 0: //move up
