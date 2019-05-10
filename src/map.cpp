@@ -28,7 +28,7 @@ Map::Map(Game* game) {
                while(c == "\n") { c[0] = mapFile.get(); }
 
                //Convert string into enumerator and set tile type
-               (*(square.rbegin()))->setTileType(charToTileType(c[0]));
+               (*(square.rbegin()))->setTileType(charToTileType(c[0]),game->texManager);
 
                //n is incremented to avoid 2 squares having the same
                //identifier

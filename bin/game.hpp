@@ -6,7 +6,7 @@
 #include "SFML/Graphics.hpp"
      using namespace sf;
 #include "state_man.hpp"
-#include <string>
+#include "texture_man.hpp"
 
 #define DEBUG 1
 
@@ -37,6 +37,9 @@ class Game {
           sf::RenderWindow window;
           sf::Event event;
           sf::VideoMode desktop;
+
+          //Texture manager
+          TexManager texManager;
 
      private:
           stack<GameState*> states;

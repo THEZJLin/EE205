@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "utilities.hpp"
+#include "texture_man.hpp"
 
 //Parameter aliases
 #define SPAWN1 20
@@ -31,7 +32,7 @@ class Square {
           RectangleShape rect;
 
           //Sets the terrain type of the square
-          void setTileType(tileType t);
+          void setTileType(tileType t,TexManager& texManager);
 
           //Sets a building in a square
           void setBuilding(building b);

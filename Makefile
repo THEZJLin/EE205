@@ -4,8 +4,8 @@ SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 #Commands to create executable files
 
-main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o
-	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o -o ./tst/a.out $(SFMLFLAGS)
+main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o
+	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o -o ./tst/a.out $(SFMLFLAGS)
 	./tst/a.out
 
 menu_test: ./src/menu_test.o 
@@ -35,7 +35,7 @@ grid_test: ./src/grid.o
 ./src/square.o: ./src/square.cpp ./bin/square.hpp
 	g++ -c ./src/square.cpp -I./bin/ -o ./src/square.o
 
-./src/game.o: ./bin/state_man.hpp ./bin/game.hpp ./src/game.cpp
+./src/game.o: ./bin/state_man.hpp ./bin/game.hpp ./src/game.cpp ./bin/texture_man.hpp ./src/texture_man.cpp
 	g++ -c ./src/game.cpp -I./bin/ -o ./src/game.o
 
 ./src/console.o: ./bin/console.hpp ./src/console.cpp ./bin/map.hpp ./bin/game.hpp ./src/game.cpp ./bin/paths.hpp
@@ -52,6 +52,9 @@ grid_test: ./src/grid.o
 
 ./src/player.o: ./bin/player.hpp ./src/player.cpp
 	g++ -c ./src/player.cpp -I./bin/ -o ./src/player.o
+
+./src/texture_man.o: ./bin/texture_man.hpp ./src/texture_man.cpp
+	g++ -c ./src/texture_man.cpp -I./bin/ -o ./src/texture_man.o
 	
 #Individual function proof of concepts
 

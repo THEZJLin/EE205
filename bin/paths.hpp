@@ -10,6 +10,13 @@
 //Maps
 #define DEFAULT "./resources/maps/default_map"
 
+//Map textures
+#define PLAIN "./resources/maps/tile_textures/plain.jpg"
+#define FOREST "./resources/maps/tile_textures/forest.png"
+#define MOUNTAIN "./resources/maps/tile_textures/mountain.png"
+#define OCEAN "./resources/maps/tile_textures/ocean.png"
+#define DESERT "./resources/maps/tile_textures/sand.png"
+
 //Config files
 
 //Save files

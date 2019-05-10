@@ -22,6 +22,7 @@ void Movement::draw(){
 void Movement::update(){
      std::cout<<"updating screen"<<std::endl;
      map->updatePop(Christians);
+     map->updatePop(Greeks);
 
 }
 void Movement::handleInput(){
