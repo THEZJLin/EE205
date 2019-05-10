@@ -18,8 +18,6 @@ Square::Square(int x_pos, int y_pos, int size_, int n_) {
      //Set coordinates of first player's citizens
      //Assign values to square parameters
      n = n_;
-     birth = .9;
-     death = .9;
      pop = 0;
 
      //Set ownership value
@@ -31,36 +29,36 @@ Square::Square(int x_pos, int y_pos, int size_, int n_) {
 void Square::setTileType(tileType t, TexManager& texManager) {
      switch(t) {
           case plain: 
-               birth = birth * 1;
-               death = death * 1;
+               birth = .8;
+               death = .5;
                terrain = plain;
                rect.setTexture(&(texManager.getTex("plain")));
                break;
 
           case forest : 
-               birth = birth * 1.2;
-               death = death * .8;
+               birth = .9;
+               death = .4;
                terrain = forest;
                rect.setTexture(&(texManager.getTex("forest")));
                break;
 
           case desert :
-               birth = birth * .8;
-               death = death * 1.2;
+               birth = .5;
+               death = .9;
                terrain = desert;
                rect.setTexture(&(texManager.getTex("desert")));
                break;
 
           case ocean :
                birth = 0;
-               death = death * .2;
+               death = .5;
                terrain = ocean;
                rect.setTexture(&(texManager.getTex("ocean")));
                break;
                
           case mountain :
                birth = 0;
-               death = 0;
+               death = 1;
                terrain = mountain;
                rect.setTexture(&(texManager.getTex("mountain")));
                break;

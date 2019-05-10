@@ -10,6 +10,7 @@
 //Maps
 #define DEFAULT "./resources/maps/default_map"
 #define PLAINS "./resources/maps/plains"
+#define FORESTS "./resources/maps/forests"
 
 //Map textures
 #define PLAIN "./resources/maps/tile_textures/plain.jpg"

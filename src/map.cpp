@@ -8,7 +8,7 @@ Map::Map(Game* game) {
 
      //Variables for loading in map from file
      char c[2];
-     std::ifstream mapFile(PLAINS);
+     std::ifstream mapFile(DEFAULT);
 
      //Calculate square size based on current screen resolution
      float size;
@@ -92,10 +92,9 @@ float Map::updatePop(faction fact) {
 
      //Used to keep track of current square
      for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it) {
-		 if(fact == (*it)->ownedBy) {
+		if(fact == (*it)->ownedBy) {
           //Calculate births and add to square population
           tile_births = (int) (((*it)->pop) * ((*it)->birth));
-
           //Calculate deaths and subtract from square population
           tile_deaths = (int) (((*it)->pop) * ((*it)->death));
           (*it)->pop += tile_births - tile_deaths;
@@ -104,33 +103,33 @@ float Map::updatePop(faction fact) {
                tile_deaths += ((*it)->pop - MAX);
                (*it)->pop = MAX;
           }
-
           //Increment total births/deaths for turn
           tot_births += tile_births;
           tot_deaths += tile_deaths;
 
 
+          }
+          //If population is 0, remove ownership from tile
+          if((*it)->pop <= 0) {
+               (*it)->pop = 0;
+               (*it)->ownedBy = None;
+          }
+
+          //(PLACEHOLDER) Change fill color if square is occupied
+          if((*it)->ownedBy == Christians) {(*it)->rect.setFillColor(Color::Red);}
+          else if((*it)->ownedBy == Greeks) {(*it)->rect.setFillColor(Color(100,100,200));}
+          else if((*it)->ownedBy == None) {(*it)->rect.setFillColor(Color(255,255,100));}
+
      }
-	
-     
+
+
      for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it) {
            //Expand population to adjacent tiles if population threshold is met
-		 expandPop(it);
-     
+	     expandPop(it);
      }
-
-
-     //(PLACEHOLDER) Change fill color if square is occupied
-     if((*it)->ownedBy == Christians) {
-           (*it)->rect.setFillColor(Color::Red);
-      }
-
-      else if((*it)->ownedBy == Greeks) {(*it)->rect.setFillColor(Color::Blue);}
-
-     }
-
 
      return tot_deaths;
+
 }
 
 void Map::Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
