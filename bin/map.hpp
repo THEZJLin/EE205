@@ -11,7 +11,7 @@
 #define MAP_DIM 15
 #define SPAWN1 20
 //Threshold before population expands to adjacent tiles
-#define THRESHOLD 170
+#define THRESHOLD 15
 #define MAX 200
 //Number of people that move to adjacent tiles upon reaching thresh
 #define SETTLERS 5
@@ -25,6 +25,7 @@ class Game;
 //The "map" used in the game, consists of a grid of "Square" objects
 class Map {
      public:
+
           //Constructor and destructor
           Map(Game* game_);
           ~Map();
@@ -34,10 +35,8 @@ class Map {
 
           //functions for expanding population
           float updatePop(faction fact);
+					void Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
           void expandPop(vector<Square*>::iterator tile);
-
-          //test variable
-          int total_deaths;
 
           //squares making up the map are stored here
           std::vector<Square*> square;
@@ -52,4 +51,3 @@ class Map {
 };
 
 #endif
-
