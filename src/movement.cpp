@@ -14,7 +14,8 @@ Movement::Movement(Map* map_,Game* game_){
 	yindex = size;
 	move;
 	//set element coordinates
-	tex.loadFromFile("../Resources/Movement/cursor.png");
+	tex.loadFromFile("./resources/Movement/cursor.png");
+     cursorimage.setTexture(tex);
 	cursorimage.setPosition(xindex,yindex);
 	cursorimage.setColor(sf::Color(255, 255, 255, 255));
 	cursorimage.setScale(1,1);
@@ -26,6 +27,7 @@ void Movement::draw(){
 		game->window.clear();
 		for(std::vector<Square*>::iterator it=map->square.begin();it!=map->square.end();++it) {
 		game->window.draw((*it)->rect);
+          game->window.draw(cursorimage);
 		}
 }
 void Movement::update(){
@@ -66,6 +68,7 @@ void Movement::update(){
 			game->window.close();
 			}
 		else{}
+     move = 4;
 
 }
 void Movement::handleInput(){
