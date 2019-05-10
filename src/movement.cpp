@@ -9,6 +9,10 @@ Movement::Movement(Map* map_,Game* game_){
 	map = map_;
 	game = game_;
 	i=0;
+	size = (((game->desktop.height)*0.8) / MAP_DIM );
+	xindex = size;
+	yindex = size;
+	move;
   //(PLACEHOLDER) spawnpoint for testing
   map->setPop(0,Christians);
 }	
@@ -20,8 +24,39 @@ void Movement::draw(){
 		}
 }
 void Movement::update(){
-     std::cout<<"updating screen"<<std::endl;
-     map->updatePop(Christians);
+	std::cout<<"updating screen"<<std::endl;
+    map->updatePop(Christians);
+	//initializes key presses
+	//set element coordinates
+	tex.loadFromFile("../Resources/Movement/cursor.png");
+	cursorimage.setPosition(xindex,yindex);
+	//vector of square pointers
+	switch(move){
+	case 0: //move up
+				//moves cursor up one
+				cursorimage.setPosition(xindex,yindex-size);
+			break;
+	case 1: //move down, +n
+				//moves cursor down one
+				cursorimage.setPosition(xindex,yindex+size);
+			break;
+	case 2: //move left, -1
+				//moves cursor left one
+				cursorimage.setPosition(xindex-size,yindex);
+			break;
+	case 3: //move right, +1
+				//moves cursor right one
+				cursorimage.setPosition(xindex+size,yindex);
+			break;
+	case 4: //null
+			break;
+		default:break;
+	}
+		//closes on window x
+		if(game->event.type == Event::Closed) {
+			game->window.close();
+			}
+		else{}
 
 }
 void Movement::handleInput(){
@@ -35,55 +70,44 @@ void Movement::handleInput(){
 	switch(x){
 	case sf::Keyboard::Up: //move up
 		//can't go up if you're already on the first row
-		if(i <= MAP_DIM-1){}
+		if(i <= MAP_DIM-1){
+			move = 4;
+		}
 			else{
-				//changes modified square back to uniform
-				map->square[i]->rect.setOutlineThickness(1);
-				map->square[i]->rect.setOutlineColor(Color::Red);
+				//updates index
 				i = i - MAP_DIM;
-				//changes the new square at index to differentiate where you're located
-				map->square[i]->rect.setOutlineThickness(2);
-				map->square[i]->rect.setOutlineColor(Color::Black);
+				move = 0;
 			}
 			break;
 	case sf::Keyboard::Down: //move down, +n
 		//can't go down if you're already on the bottom row
 		if(i >=((MAP_DIM * MAP_DIM) - MAP_DIM)){}
 			else{
-				//changes modified square back to uniform
-				map->square[i]->rect.setOutlineThickness(1);
-				map->square[i]->rect.setOutlineColor(Color::Red);
+				//updates index
 				i = i + MAP_DIM;
-				//changes the new square at index to differentiate where you're located
-				map->square[i]->rect.setOutlineThickness(2);
-				map->square[i]->rect.setOutlineColor(Color::Black);
+				move = 1;
 			}	
 			break;
 	case sf::Keyboard::Left: //move left, -1
 		//if you're currently at a multiple of MAP_DIM you can't move left because that means you're already in the left column
-		if((i)%MAP_DIM == 0){}
+		if((i)%MAP_DIM == 0){
+			move = 4;
+		}
 			else{
-				//changes modified square back to uniform
-				map->square[i]->rect.setOutlineThickness(1);
-				map->square[i]->rect.setOutlineColor(Color::Red);
+				//updates index
 				i = i-1;
-				//changes the new square at index to differentiate where you're located
-				map->square[i]->rect.setOutlineThickness(2);
-				map->square[i]->rect.setOutlineColor(Color::Black);
+				move = 2;
 			}
 			break;
 	case sf::Keyboard::Right: //move right, +1
 		//if you're current location + 1 is a multiple of MAP_DIM you can't move right because that means you're already in the right column
-		if((i+1)%MAP_DIM == 0){}
+		if((i+1)%MAP_DIM == 0){
+			move = 4;
+		}
 			else{
-				//changes modified square back to uniform
-				map->square[i]->rect.setOutlineThickness(1);
-				map->square[i]->rect.setOutlineColor(Color::Red);
+				//updates index
 				i = i+1;
-				//changes the new square at index to differentiate where you're located
-				map->square[i]->rect.setOutlineThickness(2);
-				map->square[i]->rect.setOutlineColor(Color::Black);
-
+				move = 3;
 			}
 			break;
 		default:break;
