@@ -8,7 +8,7 @@ Map::Map(Game* game) {
 
      //Variables for loading in map from file
      char c[2];
-     std::ifstream mapFile(DEFAULT);
+     std::ifstream mapFile(PLAINS);
 
      //Calculate square size based on current screen resolution
      float size;
@@ -111,18 +111,23 @@ float Map::updatePop(faction fact) {
 
 
      }
+	
+     
+     for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it) {
+           //Expand population to adjacent tiles if population threshold is met
+		 expandPop(it);
+     
+     }
+
+
      //(PLACEHOLDER) Change fill color if square is occupied
      if((*it)->ownedBy == Christians) {
            (*it)->rect.setFillColor(Color::Red);
       }
+
       else if((*it)->ownedBy == Greeks) {(*it)->rect.setFillColor(Color::Blue);}
 
      }
-		 for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it)
-		 {
-           //Expand population to adjacent tiles if population threshold is met
-		 expandPop(it);
-           }
 
 
      return tot_deaths;
