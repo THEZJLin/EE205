@@ -21,8 +21,6 @@ Map::Map(Game* game) {
                n++;
           }
      }
-     total_deaths = 0;
-
 }
 
 
@@ -105,11 +103,13 @@ float Map::updatePop(faction fact) {
 
      }
 		 for(vector<Square*>::iterator it = square.begin(); it!= square.end() ; ++it)
-		 {//Expand population to adjacent tiles if population threshold is met
-		 expandPop(it);}
+		 {
+           //Expand population to adjacent tiles if population threshold is met
+		 expandPop(it);
+           }
 
 
-     return total_deaths;
+     return tot_deaths;
 }
 
 void Map::Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)

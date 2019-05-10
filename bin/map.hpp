@@ -38,9 +38,6 @@ class Map {
 					void Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
           void expandPop(vector<Square*>::iterator tile);
 
-          //test variable
-          int total_deaths;
-
           //squares making up the map are stored here
           std::vector<Square*> square;
 
