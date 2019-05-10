@@ -25,7 +25,7 @@ Map::Map(Game* game) {
                c[0] = mapFile.get();
 
                //get next character if newline
-               while(c == "\n") { c[0] = mapFile.get(); }
+               if(c[0] == '\n') { c[0] = mapFile.get(); }
 
                //Convert string into enumerator and set tile type
                (*(square.rbegin()))->setTileType(charToTileType(c[0]),game->texManager);
