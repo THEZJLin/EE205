@@ -13,19 +13,20 @@ Movement::Movement(Map* map_,Game* game_){
 	xindex = size;
 	yindex = size;
 	move;
-  //(PLACEHOLDER) spawnpoint for testing
-  map->setPop(0,Christians);
-
 	//set element coordinates
 	tex.loadFromFile("../Resources/Movement/cursor.png");
 	cursorimage.setPosition(xindex,yindex);
+	cursorimage.setColor(sf::Color(255, 255, 255, 255));
+	cursorimage.setScale(1,1);
+  //(PLACEHOLDER) spawnpoint for testing
+  map->setPop(0,Christians);
 }	
 
 void Movement::draw(){
 		game->window.clear();
-          map->draw(game);
-          game->window.draw(cursorimage);
-		
+		for(std::vector<Square*>::iterator it=map->square.begin();it!=map->square.end();++it) {
+		game->window.draw((*it)->rect);
+		}
 }
 void Movement::update(){
 
@@ -38,19 +39,23 @@ void Movement::update(){
 	switch(move){
 	case 0: //move up
 				//moves cursor up one
-				cursorimage.setPosition(xindex,yindex-size);
+				yindex = yindex-size;
+				cursorimage.setPosition(xindex,yindex);
 			break;
 	case 1: //move down, +n
 				//moves cursor down one
-				cursorimage.setPosition(xindex,yindex+size);
+				yindex = yindex+size;
+				cursorimage.setPosition(xindex,yindex);
 			break;
 	case 2: //move left, -1
 				//moves cursor left one
-				cursorimage.setPosition(xindex-size,yindex);
+				xindex = xindex - size;
+				cursorimage.setPosition(xindex,yindex);
 			break;
 	case 3: //move right, +1
 				//moves cursor right one
-				cursorimage.setPosition(xindex+size,yindex);
+				xindex = xindex + size;
+				cursorimage.setPosition(xindex,yindex);
 			break;
 	case 4: //null
 			break;
