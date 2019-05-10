@@ -14,7 +14,7 @@ void skills::tunda(std::vector<Square*>::iterator attacker,std::vector<Square*>:
 void skills::earthquake(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
 	//earth quake for the christians
-	if((*attacker)->ownedBy == Christian && (*attacker)->n >= (MAP_DIM*MAP_DIM -MAPDIM))
+	if((*attacker)->ownedBy == Christians && (*attacker)->n >= (MAP_DIM*MAP_DIM -MAP_DIM))
 	{
 		for(int i = (*defender)->n; i<(MAP_DIM*MAP_DIM); i += MAP_DIM)
 		{
@@ -22,7 +22,7 @@ void skills::earthquake(std::vector<Square*>::iterator attacker,std::vector<Squa
 		}
 	}
 	//earthquake for the greeks
-	if((*attacker)->ownedBy == Greek && (*attacker)->n >(MAP_DIM))
+	if((*attacker)->ownedBy == Greeks && (*attacker)->n >(MAP_DIM))
 	{
 		for(int i=(*defender)->n;i>0; i -= MAP_DIM)
 		{
