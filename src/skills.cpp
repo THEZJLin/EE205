@@ -3,9 +3,9 @@
 //thunder skill
 //given an iterator to the attacker tile and an iterator to the defender tile
 //iterate through defender
+
 void skills::tunda(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
-
 	(*defender)->ownedBy=(*attacker)->ownedBy;
 	defender[MAP_DIM]->ownedBy=(*attacker)->ownedBy;
 }
@@ -13,19 +13,24 @@ void skills::tunda(std::vector<Square*>::iterator attacker,std::vector<Square*>:
 //iterate to the edge of the map from selected tile
 void skills::earthquake(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
-	if()
-
-	for(defender;defender < defender+ (MAP_DIM*MAP_DIM); defender += MAP_DIM)
+	//earth quake for the christians
+	if((*attacker)->ownedBy == Christian && (*attacker)->n >= (MAP_DIM*MAP_DIM -MAPDIM))
 	{
-		(*defender)->ownedBy=(*attacker)->ownedBy;
+		for(int i = (*defender)->n; i<(MAP_DIM*MAP_DIM); i += MAP_DIM)
+		{
+			(*defender)->ownedBy=(*attacker)->ownedBy;
+		}
 	}
-
-	for(defender;defender<defender+(MAP_DIM*MAP_DIM);defender += MAP_DIM)
+	//earthquake for the greeks
+	if((*attacker)->ownedBy == Greek && (*attacker)->n >(MAP_DIM))
 	{
-		(*defender)->ownedBy=(*attacker)->ownedBy;
+		for(int i=(*defender)->n;i>0; i -= MAP_DIM)
+		{
+			(*defender)->ownedBy=(*attacker)->ownedBy;
+		}
 	}
 }
 void skills::fist(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
-
+	(*defender)->ownedBy=(*attacker)->ownedBy;
 }
