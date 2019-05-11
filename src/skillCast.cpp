@@ -5,22 +5,17 @@
 #include<SFML/Graphics.hpp>
 using namespace sf;
 
-Movement::Movement(Map* map_,Game* game_){
+SkillCast::SkillCast(Map* map_,Game* game_,Sprite* cursor,Skill* skill_) 
+                                                                           cursorimage(cursor),
+                                                                           skill(skill_) {
 	map = map_;
 	game = game_;
 	i = 0;
-	size = (((game->desktop.height)*0.8) / MAP_DIM );
 	xindex = size/2;
 	yindex = size*1.5;
 	move;
 	//set element coordinates
 	tex.loadFromFile("./resources/Movement/cursor.png");
-     cursorimage.setTexture(tex);
-	cursorimage.setPosition(xindex,yindex);
-	cursorimage.setColor(sf::Color(255, 255, 255, 255));
-	cursorimage.setScale(.25,.25);
-  //(PLACEHOLDER) spawnpoint for testing
-  map->setPop(0,Christians);
 }	
 
 void Movement::draw(){
@@ -119,6 +114,12 @@ void Movement::handleInput(){
 				move = 3;
 			}
 			break;
+     case sf::Keyboard::Enter:
+          //Get iterator for current square
+          it = (map->square.begin())[i];
+          //Give it to skill class pointer
+          skill->
+          break;
 		default:break;
 	}
 		//closes on window x

@@ -3,6 +3,7 @@
 
 #include "state_man.hpp"
 #include "player.hpp"
+#include "skillCast.hpp" //state to cast a skill
 #include <SFML/Graphics.hpp>
      using namespace sf;
 #include <vector>

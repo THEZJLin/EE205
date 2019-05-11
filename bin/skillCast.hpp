@@ -13,16 +13,21 @@ class SkillCast : public GameState{
 
 	public:
 	//constructor
-	SkillCast(Map* map_, Game* game_);
+	SkillCast(Map* map_, Game* game_,Sprite* cursor, Skill* skill_);
 	Map* map;
 	Game* game;
 	void draw();
 	void update();
 	void handleInput();
+
+     //Variables to keep track of current square
 	int i;
+     vector<Square*>::iterator it;
+
 	//This is the current cursors image
      sf::Sprite* cursorimage;
 	float xindex, yindex, percent, size;
 	int move;
-	};
+};
+
 #endif 
