@@ -7,10 +7,22 @@
 #include"map.hpp"
 class skills{
 public:
+				virtual void use_kills() = 0;
 
-				void tunda(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
-				void earthquake(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
-				void fist(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+};
+//class for tunda skill
+class tunda : public skills{
+public:	void use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+};
+//class for earthquake skill
+class earthquake: public skills{
+public:void use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+};
+//class for fist skill
+class fist :public skills{
+
+public:	void use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+
 };
 
 
