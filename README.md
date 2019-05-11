@@ -9,7 +9,7 @@ Team members:
 
 Makefile should build perfectly. **Run ./a.out**
 
-Compiles and runs on linux, problems with MacOS unix. Window dimentions modified to match any device it's being used on.
+Compiles and runs on linux, problems with MacOS unix. Window dimensions modified to match any device it's being used on.
 
 ## Download: 
 git clone https://github.com/THEZJLin/f.git
