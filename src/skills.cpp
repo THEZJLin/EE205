@@ -7,6 +7,8 @@
 void skills::tunda(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
 	(*defender)->ownedBy=(*attacker)->ownedBy;
+	//checks if the tiles are inbound
+	//if out of bounds codes not gonna work
 	if( (*defender)->n < ((MAP_DIM*MAP_DIM) - MAP_DIM) )
 	{
 		defender[MAP_DIM]->ownedBy = (*attacker)->ownedBy;
@@ -36,6 +38,7 @@ void skills::earthquake(std::vector<Square*>::iterator attacker,std::vector<Squa
 }
 void skills::fist(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
+	//makes sure no segmentation fault error
 	if((*attacker)->n >=0 || (*attacker)-> n<MAP_DIM*MAP_DIM )
 	(*defender)->ownedBy=(*attacker)->ownedBy;
 }
