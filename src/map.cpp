@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 //Constructor, creates new squares and pushes them into the map vector
-Map::Map(Game* game) {
+Map::Map(Game* game_) : game(game_) {
      n = 0;
 
      //Variables for loading in map from file
@@ -40,6 +40,20 @@ Map::Map(Game* game) {
      mapFile.close();
 }
 
+
+//Function to set map
+void Map::updateTerrain(std::string path) {
+     char c;
+     //Load map file
+     std::ifstream mapFile(path);
+     for(int i = 0;i<(MAP_DIM*MAP_DIM);i++) {
+          c = mapFile.get();
+          //get next character if newline
+          while(c == '\n') { c = mapFile.get(); }
+
+          square[i]->setTileType(charToTileType(c),game->texManager);
+     }
+}
 
 
 

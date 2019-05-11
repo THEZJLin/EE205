@@ -34,6 +34,7 @@ class Map {
 
           //Setter functions
           void setPop(int n_, faction ownedBy_);
+          void updateTerrain(std::string path);
 
           //functions for expanding population
           float updatePop(faction fact);
@@ -45,6 +46,8 @@ class Map {
 
           //function to draw map to screen
           void draw(Game* game_);
+
+          Game* game;
 
      private:
 
