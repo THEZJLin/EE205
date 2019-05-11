@@ -4,8 +4,8 @@ SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 #Commands to create executable files
 
-main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o
-	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o -o ./tst/a.out $(SFMLFLAGS)
+main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o ./src/use_skill.o
+	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o ./src/use_skill.o -o ./tst/a.out $(SFMLFLAGS)
 	./tst/a.out
 
 menu_test: ./src/menu_test.o
@@ -50,16 +50,18 @@ grid_test: ./src/grid.o
 ./src/movement.o: ./bin/movement.hpp ./src/movement.cpp ./bin/map.hpp ./src/map.cpp ./bin/game.hpp ./bin/action.hpp ./src/action.cpp
 	g++ -c ./src/movement.cpp -I./bin/ -o ./src/movement.o
 
-./src/skills.o: ./bin/skills.hpp ./src/skills.cpp ./bin/map.hpp ./src/map.cpp
-	g++ -c ./src/skills.cpp -I./bin/ -o ./src/skills.o
-
-
 ./src/player.o: ./bin/player.hpp ./src/player.cpp
 	g++ -c ./src/player.cpp -I./bin/ -o ./src/player.o
 
 ./src/texture_man.o: ./bin/texture_man.hpp ./src/texture_man.cpp
 	g++ -c ./src/texture_man.cpp -I./bin/ -o ./src/texture_man.o
 
+./src/skills.o: ./bin/skills.hpp ./src/skills.cpp ./bin/map.hpp ./src/map.cpp
+	g++ -c ./src/skills.cpp -I./bin/ -o ./src/skills.o
+
+./src/use_skill.o: ./bin/use_skill.hpp ./src/use_skill.cpp
+	g++ -c ./src/use_skill.cpp -I./bin/ -o ./src/use_skill.o
+	
 #Individual function proof of concepts
 
 ./src/menu_test.o: ./src/menu_test.cpp
