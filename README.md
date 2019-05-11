@@ -25,3 +25,4 @@ Basic and controls:
 ## What will be implemented in the near future (if we end up pursuing this game further)
 * Tutorial: Would be nice to implement a tutorial to make playing a little easier.
 * Balancing and patching: Player in top left expands faster than the player in the bottom right just because of the base iterators used in the population growth.
+* More than two player game: Would be cool to implement up to 4 or 8 player system.
