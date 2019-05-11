@@ -1,6 +1,12 @@
 # Society
 -A readme with instructions on how to run/compile your programs (include download links if necessary)
 
+Team members:
+* Keenan Lee
+* ZJ Lin
+* Dino Mariano
+* Jake Castillo
+
 Makefile should build perfectly. **Run ./a.out**
 
 Compiles and runs on linux, problems with MacOS unix. Window dimentions modified to match any device it's being used on.
