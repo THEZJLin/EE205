@@ -7,7 +7,7 @@
 #include"map.hpp"
 class skills{
 public:
-				virtual void use_kills() = 0;
+				virtual void use_skills() = 0;
 
 };
 //class for tunda skill

@@ -207,24 +207,6 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
                }
           }
 
-          //Check if tile is in bounds (tile left)
-          if( (*tile)->n % MAP_DIM ) {
-               //Add settlers if population of adjacent tile is below max
-               if(tile[LEFT]->pop < MAX) {
-		          //check if the tile is owned by an enemy
-				if((*tile)->ownedBy != tile[LEFT]->ownedBy && tile[LEFT]->ownedBy != None) {
-                         Attack(tile, (tile+LEFT));
-                    }
-
-				if((*tile)->ownedBy == tile[LEFT]->ownedBy || tile[LEFT]->ownedBy == None) {
-                         (*tile)->pop -= SETTLERS;
-                         tile[LEFT]->pop += SETTLERS;
-                         //Set tile ownership
-                         tile[LEFT]->ownedBy = (*tile)->ownedBy;
-                    }
-               }
-          }
-
           //Check if tile is in bounds (tile right)
           if( (((*tile)->n)+1) % MAP_DIM ) {
                //Add settlers if population of adjacent tile is below max
@@ -239,6 +221,24 @@ void Map::expandPop(std::vector<Square*>::iterator tile) {
                          tile[RIGHT]->pop += SETTLERS;
                          //Set tile ownership
                          tile[RIGHT]->ownedBy = (*tile)->ownedBy;
+                    }
+               }
+          }
+
+          //Check if tile is in bounds (tile left)
+          if( (*tile)->n % MAP_DIM ) {
+               //Add settlers if population of adjacent tile is below max
+               if(tile[LEFT]->pop < MAX) {
+		          //check if the tile is owned by an enemy
+				if((*tile)->ownedBy != tile[LEFT]->ownedBy && tile[LEFT]->ownedBy != None) {
+                         Attack(tile, (tile+LEFT));
+                    }
+
+				if((*tile)->ownedBy == tile[LEFT]->ownedBy || tile[LEFT]->ownedBy == None) {
+                         (*tile)->pop -= SETTLERS;
+                         tile[LEFT]->pop += SETTLERS;
+                         //Set tile ownership
+                         tile[LEFT]->ownedBy = (*tile)->ownedBy;
                     }
                }
           }

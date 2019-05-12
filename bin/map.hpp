@@ -10,7 +10,7 @@
 #include <vector>
 
 //Grid parameters
-#define MAP_DIM 15
+#define MAP_DIM 16
 #define SPAWN1 20
 //Threshold before population expands to adjacent tiles
 #define THRESHOLD 170

@@ -3,8 +3,8 @@
 //thunder skill
 //given an iterator to the attacker tile and an iterator to the defender tile
 //iterate through defender
-virtual void skills::use_skills()=0{}
-void tunda::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)override
+
+void tunda::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
 	(*defender)->ownedBy=(*attacker)->ownedBy;
 	//checks if the tiles are inbound
@@ -17,7 +17,7 @@ void tunda::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square
 }
 //earth quake skill
 //iterate to the edge of the map from selected tile
-void earthquake::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)override
+void earthquake::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
 	//earth quake for the christians
 	if((*attacker)->ownedBy == Christians && (*attacker)->n >= (MAP_DIM*MAP_DIM -MAP_DIM))
@@ -36,7 +36,7 @@ void earthquake::use_skill(std::vector<Square*>::iterator attacker,std::vector<S
 		}
 	}
 }
-void fist::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)override
+void fist::use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender)
 {
 	//makes sure no segmentation fault error
 	if((*attacker)->n >=0 || (*attacker)-> n<MAP_DIM*MAP_DIM )
