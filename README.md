@@ -25,8 +25,8 @@ When a population in a tile grows too large, citizens of the tile will automatic
 ### Skills
 Players can spend souls to use different skills. Currently, there are three skills in the game
 * *growth* - A population seed is planted on an empty tile. Using this skill on a non-empty tile will consume souls but won't have any effect
-* *earthquake* (High-cost)- Tremors will spread out in a row along the map. Tiles in the earthquake path will be converted to the player's religion
-* fist - god's hand descends from the sky, this skill will completely destroy a tile
+* *earthquake* (High-cost)- Tremors will spread out in a row along the map. The populations of tiles in the path of the earthquake will be converted to the player's religion
+* fist - god's hand descends from the sky, this skill completely destroys a tile
 
 ### Basic and controls:
 * Arrow keys control movement across board.
