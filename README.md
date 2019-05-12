@@ -1,6 +1,6 @@
 # Society
-- A turn-based, open source, civ-like, role-playing, free, multiplayer game
-- **github:** https://github.com/TheZJLin/f
+- A Turn-based, Open Source, Civ-like, Role-playing, Free, Multiplayer Game
+### Github: https://github.com/TheZJLin/f
 
 ### Team members:
 * Keenan Lee
@@ -42,7 +42,7 @@ Players can spend souls to use different skills. Currently, there are three skil
     - *turn* - Provides a menu for players to select their actions during their turn.
     - *useSkill* - A state allowing players to select available spells to use
     - *Movement* - State that allows players to navigate through the map and view information on specific tiles
-        - skillCast - State inheriting from movement, allows players to select a tile to cast skills
+        - skillCast - State inheriting from movement, allows players to select a tile to cast skills on
     - *ff* - A state allowing players to "fast-forward" their current game
 * *Console* - Utilizes a deque to display messages to the screen
 * *Square* - A core part of gameplay, stores most of the game data
