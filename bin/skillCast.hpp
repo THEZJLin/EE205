@@ -5,6 +5,7 @@ using namespace sf;
 #include <iostream>
 #include "game.hpp"
 #include "state_man.hpp"
+#include "skills.hpp"
 //value to control debug statements
 #define DEBUG 1
 

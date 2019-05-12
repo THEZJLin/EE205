@@ -19,8 +19,8 @@ Movement::Movement(Map* map_,Game* game_){
 	cursorimage.setPosition(xindex,yindex);
 	cursorimage.setColor(sf::Color(255, 255, 255, 255));
 	cursorimage.setScale(.25,.25);
-  //(PLACEHOLDER) spawnpoint for testing
-  map->setPop(0,Christians);
+
+     it = nullptr;
 }	
 
 void Movement::draw(){
@@ -72,7 +72,7 @@ void Movement::handleInput(){
 	//initializes key presses
 	sf::Keyboard::Key x;
 	if(game->event.type == Event::KeyPressed){
-	x = game->event.key.code;
+	     x = game->event.key.code;
 	}
 	else{}
 	//vector of square pointers
@@ -119,6 +119,11 @@ void Movement::handleInput(){
 				move = 3;
 			}
 			break;
+
+     case sf::Keyboard::Return:
+          it = map->squares.begin();
+          it = it[i];
+          break;
 		default:break;
 	}
 		//closes on window x

@@ -25,5 +25,7 @@ class Movement:public GameState{
      sf::Sprite cursorimage;
 	float xindex, yindex, percent, size;
 	int move;
+
+     vector<Square*>::iterator it;
 	};
 #endif 
