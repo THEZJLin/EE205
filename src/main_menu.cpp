@@ -21,6 +21,12 @@ if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
 
      }
 
+     //Set background
+     if(!back.loadFromFile("./resources/maps/tile_textures/background.png")) { throw "Texture not loaded"; }
+     background = RectangleShape(Vector2f(game->desktop.width,game->desktop.height));
+     background.setPosition(0,0);
+     background.setTexture(&back);
+
      //Set text
      title.setFont(font);
      title.setString("SOCIETY");
@@ -35,7 +41,7 @@ if(DEBUG) std::cout << "Main Menu Constructor called" << std::endl;
      button_1.setCharacterSize(TXTSIZE);
      
      button_2.setFont(font);
-     button_2.setString("Tutorial");
+     button_2.setString("(Coming Soon)");
      button_2.setCharacterSize(TXTSIZE);
      
      button_3.setFont(font);
@@ -74,6 +80,7 @@ if(DEBUG) std::cout << "Main Menu constructor successfully finished" << std::end
 void Main_Menu::draw() {
 
      game->window.clear();
+     game->window.draw(background);
      game->window.draw(play_rect);
      game->window.draw(opt_rect);
      game->window.draw(exit_rect);

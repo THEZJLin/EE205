@@ -2,17 +2,19 @@
 #include "game.hpp"
 #include "map.hpp"
 #include <iostream>
+#include <sstream>
 #include<SFML/Graphics.hpp>
 using namespace sf;
 
-Movement::Movement(Map* map_,Game* game_){
+Movement::Movement(Map* map_,Game* game_,Console* log_){
+     log = log_;
 	map = map_;
 	game = game_;
 	i = 0;
 	size = (((game->desktop.height)*0.8) / MAP_DIM );
 	xindex = size/2;
-	yindex = size*1.5;
-	move;
+	yindex = size/2;
+	move = 5;
 	//set element coordinates
 	tex.loadFromFile("./resources/Movement/cursor.png");
      cursorimage.setTexture(tex);
@@ -25,36 +27,41 @@ Movement::Movement(Map* map_,Game* game_){
 void Movement::draw(){
 		game->window.clear();
           map->draw(game);
+          log->draw();
           game->window.draw(cursorimage);
 }
 void Movement::update(){
-
-     std::cout<<"updating screen"<<std::endl;
-     map->updatePop(Christians);
-     map->updatePop(Greeks);
-
 	//initializes key presses
 	//vector of square pointers
+     stringstream ss;
 	switch(move){
 	case 0: //move up
 				//moves cursor up one
 				yindex = yindex-size;
 				cursorimage.setPosition(xindex,yindex);
+     ss << "Population of square "<<i<<": "<<map->square[i]->pop;
+     log->pushEntry(ss.str());
 			break;
 	case 1: //move down, +n
 				//moves cursor down one
 				yindex = yindex+size;
 				cursorimage.setPosition(xindex,yindex);
+     ss << "Population of square "<<i<<": "<<map->square[i]->pop;
+     log->pushEntry(ss.str());
 			break;
 	case 2: //move left, -1
 				//moves cursor left one
 				xindex = xindex - size;
 				cursorimage.setPosition(xindex,yindex);
+     ss << "Population of square "<<i<<": "<<map->square[i]->pop;
+     log->pushEntry(ss.str());
 			break;
 	case 3: //move right, +1
 				//moves cursor right one
 				xindex = xindex + size;
 				cursorimage.setPosition(xindex,yindex);
+     ss << "Population of square "<<i<<": "<<map->square[i]->pop;
+     log->pushEntry(ss.str());
 			break;
 
 		default: break;
@@ -118,7 +125,9 @@ void Movement::handleInput(){
 				move = 3;
 			}
 			break;
-
+     case sf::Keyboard::Return:
+          game->popState();
+          break;
 		default:break;
 	}
 		//closes on window x

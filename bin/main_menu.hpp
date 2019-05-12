@@ -53,6 +53,9 @@ class Main_Menu : public GameState
        RectangleShape play_rect;
        RectangleShape opt_rect;
        RectangleShape exit_rect;
+       RectangleShape background;
+
+       Texture back;
 
        //Menu font
        Font font;

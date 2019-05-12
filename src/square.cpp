@@ -30,14 +30,14 @@ void Square::setTileType(tileType t, TexManager& texManager) {
      switch(t) {
           case plain: 
                birth = .8;
-               death = .5;
+               death = .2;
                terrain = plain;
                rect.setTexture(&(texManager.getTex("plain")));
                break;
 
           case forest : 
                birth = .9;
-               death = .4;
+               death = .2;
                terrain = forest;
                rect.setTexture(&(texManager.getTex("forest")));
                break;

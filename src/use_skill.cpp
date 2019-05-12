@@ -4,11 +4,11 @@
 
 //Constructor
 useSkill::useSkill(Game* game_, Map* map_, Console* log_, Player* player_) :  
-                                                    skill1("Skill 1",log_->getFont(),game_->desktop.height*.1),
-                                                    skill2("Skill 2",log_->getFont(),game_->desktop.height*.1),
-                                                    skill3("Skill 3",log_->getFont(),game_->desktop.height*.1),
-                                                    cancel("Cancel",log_->getFont(),game_->desktop.height*.1), 
-                                                    soulsTxt("Souls: ",log_->getFont(),game_->desktop.height*.05), 
+                                                    skill1("Skill 1",log_->getFont(),game_->desktop.height*.08),
+                                                    skill2("Skill 2",log_->getFont(),game_->desktop.height*.08),
+                                                    skill3("Skill 3",log_->getFont(),game_->desktop.height*.08),
+                                                    cancel("Cancel",log_->getFont(),game_->desktop.height*.08), 
+                                                    soulsTxt("Souls: ",log_->getFont(),game_->desktop.height*.04), 
                                                     player(player_) {
      
      //Set inherited pointers
@@ -80,23 +80,41 @@ void useSkill::handleInput() {
                case(Keyboard::Return): 
                
                     if(n == 0) {
-                         log->pushEntry("skill 1");
-                         skills = new tunda();
-                         game->pushState(new MoveSkill(map,game,skills,player->getFaction()));
+                         log->clear();
+                         log->pushEntry("GROWTH");
+                         log->pushEntry("Use on an empty tile to plant a population seed");
+                         if(player->getSouls() > MAX*2) { 
+                              player->addSouls(-MAX*2);
+                              skills = new growth();
+                              game->pushState(new MoveSkill(map,game,skills,player->getFaction(),log));
                          }
+                         else { log->pushEntry("NOT ENOUGH SOULS, need 1200"); }
+                    }
                     if(n == 1) {
-                         log->pushEntry("skill 2");
-                         skills = new earthquake();
-                         game->pushState(new MoveSkill(map,game,skills,player->getFaction()));
-                         }
-                    if(n == 2) {
-                         log->pushEntry("skill 3");
-                         skills = new fist();
-                         game->pushState(new MoveSkill(map,game,skills,player->getFaction()));
-                         }
+                         log->clear();
+                         log->pushEntry("EARTHQUAKE");
+                         log->pushEntry("Converts all people in a row to your religion");
+                         if(player->getSouls() > MAX*50) { 
+                              player->addSouls(-MAX*50);
 
-                    if(n == 3) {log->pushEntry("cancel"); 
-                                game->popState();}
+                              skills = new earthquake();
+                              game->pushState(new MoveSkill(map,game,skills,player->getFaction(),log));
+                         }
+                         else { log->pushEntry("NOT ENOUGH SOULS, need 30000"); }
+                    }
+                    if(n == 2) {
+                         log->clear();
+                         log->pushEntry("FIST");
+                         log->pushEntry("Smash a square into oblivion");
+                         if(player->getSouls() > MAX) { 
+                              player->addSouls(-MAX);
+                              skills = new fist();
+                              game->pushState(new MoveSkill(map,game,skills,player->getFaction(),log));
+                         }
+                         else { log->pushEntry("NOT ENOUGH SOULS, need 600"); }
+                    }
+
+                    if(n == 3) { game->popState(); }
 
                     break;
 

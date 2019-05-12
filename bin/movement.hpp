@@ -5,6 +5,7 @@ using namespace sf;
 #include <iostream>
 #include "game.hpp"
 #include "state_man.hpp"
+#include "console.hpp"
 //value to control debug statements
 #define DEBUG 1
 
@@ -13,9 +14,10 @@ class Movement:public GameState{
 
 	public:
 	//constructor
-	Movement(Map* map_, Game* game_);
+	Movement(Map* map_, Game* game_,Console* log_);
 	Map* map;
 	Game* game;
+     Console* log;
 	void draw();
 	void update();
 	void handleInput();

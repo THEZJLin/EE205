@@ -4,41 +4,35 @@
 //given an iterator to the attacker tile and an iterator to the defender tile
 //iterate through defender
 
-void tunda::use_skill(faction attacker,vector<Square*>::iterator defender)
+void growth::use_skill(faction attacker,vector<Square*>::iterator defender)
 {
-	(*defender)->ownedBy = attacker;
-	//checks if the tiles are inbound
-	//if out of bounds codes not gonna work
-	if( (*defender)->n < ((MAP_DIM*MAP_DIM) - MAP_DIM) )
-	{
-		defender[MAP_DIM]->ownedBy = attacker;
-	}
+     //Only useable on unowned tiles
+     if((*defender)->ownedBy != None) { return; }
 
+	(*defender)->ownedBy = attacker;
+     (*defender)->pop = 100;
+     if(attacker == Christians) { defender[MAP_DIM]->rect.setFillColor(Color::Red); }
+     else { defender[MAP_DIM]->rect.setFillColor(Color::Blue); }
 }
+
+
 //earth quake skill
 //iterate to the edge of the map from selected tile
 void earthquake::use_skill(faction attacker,vector<Square*>::iterator defender)
 {
-	//earth quake for the christians
-	if(attacker == Christians && (*defender)->n >= (MAP_DIM*MAP_DIM -MAP_DIM))
-	{
-		for(int i = (*defender)->n; i<(MAP_DIM*MAP_DIM); i += MAP_DIM)
+		for(int i = 0; (i<=MAP_DIM);i++)
 		{
-			(*defender)->ownedBy=attacker;
+               if((*defender)->n+i >= MAP_DIM*MAP_DIM) { break; }
+			(defender[i])->ownedBy=attacker;
+               if(attacker == Christians) { defender[i]->rect.setFillColor(Color::Red); }
+               else { defender[i]->rect.setFillColor(Color::Blue); }
 		}
-	}
-	//earthquake for the greeks
-	if(attacker == Greeks && (*defender)->n >(MAP_DIM))
-	{
-		for(int i=(*defender)->n;i>0; i -= MAP_DIM)
-		{
-			(*defender)->ownedBy=attacker;
-		}
-	}
 }
+
+
 void fist::use_skill(faction attacker,vector<Square*>::iterator defender)
 {
-	//makes sure no segmentation fault error
-	if((*defender)->n >=0 || (*defender)-> n<MAP_DIM*MAP_DIM )
-	(*defender)->ownedBy = attacker;
+	(*defender)->ownedBy = None;
+     (*defender)->rect.setFillColor(Color(255,255,255)); 
 }
+

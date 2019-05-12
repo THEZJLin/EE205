@@ -13,8 +13,8 @@
 #define MAP_DIM 16
 #define SPAWN1 20
 //Threshold before population expands to adjacent tiles
-#define THRESHOLD 170
-#define MAX 200
+#define THRESHOLD 20
+#define MAX 600
 //Number of people that move to adjacent tiles upon reaching thresh
 #define SETTLERS 5
 #define LEFT -1
@@ -38,8 +38,8 @@ class Map {
 
           //functions for expanding population
           float updatePop(faction fact);
-					void Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
-          void expandPop(vector<Square*>::iterator tile);
+		float Attack(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+          float expandPop(vector<Square*>::iterator tile);
 
           //squares making up the map are stored here
           std::vector<Square*> square;

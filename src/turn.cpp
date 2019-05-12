@@ -1,15 +1,16 @@
 #include "turn.hpp"
 #include "paths.hpp"
 #include "use_skill.hpp"
+#include "movement.hpp"
 
 
 //Constructor
 Turn::Turn(Game* game_, Map* map_, Console* log_, Player* player_) :  
-                                                    viewTileTxt("Explore",log_->getFont(),game_->desktop.height*.1),
-                                                    buildTxt("Build",log_->getFont(),game_->desktop.height*.1),
-                                                    skillTxt("Skills",log_->getFont(),game_->desktop.height*.1),
-                                                    endTurnTxt("End Turn",log_->getFont(),game_->desktop.height*.1), 
-                                                    soulsTxt("Souls: ",log_->getFont(),game_->desktop.height*.05), 
+                                                    viewTileTxt("Explore",log_->getFont(),game_->desktop.height*.08),
+                                                    buildTxt("Build",log_->getFont(),game_->desktop.height*.08),
+                                                    skillTxt("Skills",log_->getFont(),game_->desktop.height*.08),
+                                                    endTurnTxt("End Turn",log_->getFont(),game_->desktop.height*.08), 
+                                                    soulsTxt("Souls: ",log_->getFont(),game_->desktop.height*.04), 
                                                     player(player_) {
      
      //Set inherited pointers
@@ -62,7 +63,12 @@ Turn::Turn(Game* game_, Map* map_, Console* log_, Player* player_) :
      menTxt.push_back(&endTurnTxt);
 
      stringstream ss;
-     ss << "Start Turn: " << player->getFaction();
+     if(player->getFaction() == 0)
+          ss << "Start Turn: " << "Greeks";
+
+     else
+          ss <<"Start Turn: " << "Christians";
+     log->clear();
      log->pushEntry(ss.str());
 }
 
@@ -79,8 +85,11 @@ void Turn::handleInput() {
                //Switch statements for when "return" button pressed
                // (game changes states)
                case(Keyboard::Return): 
-                    if(n == 0) {log->pushEntry("View state pushed");}
-                    if(n == 1) {log->pushEntry("Build state pushed");}
+                    if(n == 0) {
+                         log->pushEntry("View Tile Information");
+                         game->pushState(new Movement(map,game,log));     
+                    }
+                    if(n == 1) {log->pushEntry("Buildings to be implemented");}
                     if(n == 2) {log->pushEntry("Skill state pushed");
                                 game->pushState(new useSkill(game,map,log,player));
                     }

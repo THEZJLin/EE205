@@ -13,7 +13,7 @@ public:
 
 };
 //class for tunda skill
-class tunda : public Skills{
+class growth : public Skills{
 public:	void use_skill(faction attacker,std::vector<Square*>::iterator defender);
 };
 //class for earthquake skill

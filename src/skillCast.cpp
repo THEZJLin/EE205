@@ -7,13 +7,14 @@
 
 using namespace sf;
 
-MoveSkill::MoveSkill(Map* map_,Game* game_,Skills* skill_,faction player_) :
-                                                                           Movement(map_, game_),
+MoveSkill::MoveSkill(Map* map_,Game* game_,Skills* skill_,faction player_,Console* log_) :
+                                                                           Movement(map_, game_,log_),
                                                                            skill(skill_), 
                                                                            player(player_) { }	
 
 void MoveSkill::draw(){
 		game->window.clear();
+          log->draw();
           map->draw(game);
           game->window.draw(cursorimage);
 }

@@ -7,7 +7,7 @@
 class MoveSkill : public Movement {
      public:
           //Constructor, destructor
-          MoveSkill(Map* map_,Game* game_, Skills* skill_,faction player_);
+          MoveSkill(Map* map_,Game* game_, Skills* skill_,faction player_,Console* log_);
           void update();
           void draw();
           void handleInput();

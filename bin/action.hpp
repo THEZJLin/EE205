@@ -23,6 +23,9 @@ class Action : public GameState {
           vector<Player*> playersIngame;
           vector<Player*>::iterator it;
 
+          bool loseCon(faction player);
+          bool win;
+
      private:
           Console log;
 };
