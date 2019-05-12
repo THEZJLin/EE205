@@ -4,8 +4,8 @@ SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 #Commands to create executable files
 
-main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o ./src/use_skill.o
-	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o ./src/use_skill.o -o ./tst/a.out $(SFMLFLAGS)
+main: ./src/main_menu.o ./tst/main.o ./src/game.o ./src/square.o ./src/map.o ./src/action.o ./src/map_select.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o ./src/use_skill.o
+	g++ ./tst/main.o ./src/main_menu.o ./src/game.o ./src/square.o ./src/map.o ./src/map_select.o ./src/action.o ./src/movement.o ./src/console.o ./src/turn.o ./src/player.o ./src/utilities.o ./src/texture_man.o ./src/skills.o ./src/use_skill.o -o ./tst/a.out $(SFMLFLAGS)
 	./tst/a.out
 
 menu_test: ./src/menu_test.o
@@ -61,6 +61,9 @@ grid_test: ./src/grid.o
 
 ./src/use_skill.o: ./bin/use_skill.hpp ./src/use_skill.cpp
 	g++ -c ./src/use_skill.cpp -I./bin/ -o ./src/use_skill.o
+
+./src/map_select.o: ./bin/map_select.hpp ./src/map_select.cpp
+	g++ -c ./src/map_select.cpp -I./bin/ -o ./src/map_select.o
 	
 #Individual function proof of concepts
 

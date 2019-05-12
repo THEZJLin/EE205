@@ -4,6 +4,7 @@
 #include "action.hpp"
 #include "map.hpp"
 #include "paths.hpp"
+#include "map_select.hpp"
 
 #include <SFML/Graphics.hpp>
      using namespace sf;
@@ -113,7 +114,7 @@ void Main_Menu::handleInput() {
                                 case start:
                                      //start the game
                                      std::cout << "Game started" << std::endl;
-                                     game->pushState(new Action(game,map));
+                                     game->pushState(new MapSelect(game,map));
                                      break;
                                 case options:
                                      //Do nothing for now

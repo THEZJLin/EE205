@@ -3,12 +3,16 @@
 #include "action.hpp"
 #include "map.hpp"
 #include "paths.hpp"
+#include <ctime>
+#include <cstdlib>
 #include <string>
 
 
 int main() {
      //Initialize objects needed for game state (always starts at Main Menu)
      Game game;
+     //Set a random seed (for attack function)
+     srand(time(0));
 
 //* Feel like hardcoding, IDK may delete later
 
