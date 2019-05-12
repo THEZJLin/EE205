@@ -79,13 +79,21 @@ void useSkill::handleInput() {
                // (game changes states)
                case(Keyboard::Return): 
                
-               /*
-                    Insert skill functions here
-               
-                    if(n == 0) {log->pushEntry("skill 1");}
-                    if(n == 1) {log->pushEntry("skill 2");}
-                    if(n == 2) {log->pushEntry("skill 3");}
-               */
+                    if(n == 0) {
+                         log->pushEntry("skill 1");
+                         skills = new tunda();
+                         game->pushState(new MoveSkill(map,game,skills,player->getFaction()));
+                         }
+                    if(n == 1) {
+                         log->pushEntry("skill 2");
+                         skills = new earthquake();
+                         game->pushState(new MoveSkill(map,game,skills,player->getFaction()));
+                         }
+                    if(n == 2) {
+                         log->pushEntry("skill 3");
+                         skills = new fist();
+                         game->pushState(new MoveSkill(map,game,skills,player->getFaction()));
+                         }
 
                     if(n == 3) {log->pushEntry("cancel"); 
                                 game->popState();}

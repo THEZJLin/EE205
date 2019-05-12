@@ -1,38 +1,23 @@
 #include "movement.hpp"
 #include "game.hpp"
 #include "map.hpp"
+#include "skillCast.hpp"
 #include <iostream>
 #include<SFML/Graphics.hpp>
+
 using namespace sf;
 
-Movement::Movement(Map* map_,Game* game_){
-	map = map_;
-	game = game_;
-	i = 0;
-	size = (((game->desktop.height)*0.8) / MAP_DIM );
-	xindex = size/2;
-	yindex = size*1.5;
-	move;
-	//set element coordinates
-	tex.loadFromFile("./resources/Movement/cursor.png");
-     cursorimage.setTexture(tex);
-	cursorimage.setPosition(xindex,yindex);
-	cursorimage.setColor(sf::Color(255, 255, 255, 255));
-	cursorimage.setScale(.25,.25);
+MoveSkill::MoveSkill(Map* map_,Game* game_,Skills* skill_,faction player_) :
+                                                                           Movement(map_, game_),
+                                                                           skill(skill_), 
+                                                                           player(player_) { }	
 
-}	
-
-void Movement::draw(){
+void MoveSkill::draw(){
 		game->window.clear();
           map->draw(game);
           game->window.draw(cursorimage);
 }
-void Movement::update(){
-
-     std::cout<<"updating screen"<<std::endl;
-     map->updatePop(Christians);
-     map->updatePop(Greeks);
-
+void MoveSkill::update(){
 	//initializes key presses
 	//vector of square pointers
 	switch(move){
@@ -67,11 +52,11 @@ void Movement::update(){
      move = 4;
 
 }
-void Movement::handleInput(){
+void MoveSkill::handleInput(){
 	//initializes key presses
 	sf::Keyboard::Key x;
 	if(game->event.type == Event::KeyPressed){
-	     x = game->event.key.code;
+	x = game->event.key.code;
 	}
 	else{}
 	//vector of square pointers
@@ -118,7 +103,13 @@ void Movement::handleInput(){
 				move = 3;
 			}
 			break;
-
+     case sf::Keyboard::Return:
+          //Get iterator for current square
+          it = (map->square.begin())+i;
+          //Give it to skill class pointer
+          skill->use_skill(player,it);
+          game->popState();
+          break;
 		default:break;
 	}
 		//closes on window x

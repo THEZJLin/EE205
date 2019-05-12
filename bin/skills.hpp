@@ -5,23 +5,25 @@
 #include<iterator>
 #include"square.hpp"
 #include"map.hpp"
-class skills{
+#include "utilities.hpp"
+
+class Skills{
 public:
-				virtual void use_skills() = 0;
+	virtual void use_skill(faction attacker, std::vector<Square*>::iterator defender) = 0;
 
 };
 //class for tunda skill
-class tunda : public skills{
-public:	void use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+class tunda : public Skills{
+public:	void use_skill(faction attacker,std::vector<Square*>::iterator defender);
 };
 //class for earthquake skill
-class earthquake: public skills{
-public:void use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+class earthquake: public Skills{
+public:void use_skill(faction attacker,std::vector<Square*>::iterator defender);
 };
 //class for fist skill
-class fist :public skills{
+class fist :public Skills{
 
-public:	void use_skill(std::vector<Square*>::iterator attacker,std::vector<Square*>::iterator defender);
+public:	void use_skill(faction attacker,std::vector<Square*>::iterator defender);
 
 };
 

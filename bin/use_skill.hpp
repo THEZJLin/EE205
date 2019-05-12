@@ -3,6 +3,9 @@
 
 #include "state_man.hpp"
 #include "player.hpp"
+#include "skills.hpp"
+#include "map.hpp"
+#include "skillCast.hpp" //state to cast a skill
 #include <SFML/Graphics.hpp>
      using namespace sf;
 #include <vector>
@@ -14,7 +17,7 @@
 class useSkill : public GameState {
      public:
           //Constructor
-          useSkill(Game* game_, Map* map_, Console* log_, Player* player);
+          useSkill(Game* game_, Map* map_, Console* log_, Player* player_);
 
           //Inherited virtual functions
           void draw();
@@ -23,6 +26,8 @@ class useSkill : public GameState {
 
           //Player whose turn it is
           Player* player;
+
+          Skills* skills;
 
 
      private: 
