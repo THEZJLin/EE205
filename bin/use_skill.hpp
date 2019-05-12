@@ -19,6 +19,9 @@ class useSkill : public GameState {
           //Constructor
           useSkill(Game* game_, Map* map_, Console* log_, Player* player_);
 
+          //Destructor
+          ~useSkill();
+
           //Inherited virtual functions
           void draw();
           void update();

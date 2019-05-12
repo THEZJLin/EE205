@@ -53,6 +53,11 @@ void Action::handleInput() {
                     game->pushState(new FF(map, game, &log));
                     break;
 
+               //Easter egg
+               case(Keyboard::P):
+                    log.pushEntry("8=D");
+                    break;
+
 
                //case(Keyboard::C):
                  //   game->pushState(new Movement(map, game, &log));

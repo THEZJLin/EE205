@@ -175,3 +175,7 @@ void useSkill::draw() {
      //game->window.draw(soulsTxt);
 
 }
+
+useSkill::~useSkill() {
+     delete skills;
+}
